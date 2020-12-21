@@ -1,3 +1,7 @@
 @extends('base.base')
 
-@section('title', 'Welcome !')
+@section('title', 'Selamat Datang')
+
+@section('base')
+
+@endsection
