@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+nav.navbar .navbar-brand {
+  font-weight: bold;
+  color: #4CAF50;
+}
+nav.navbar .navbar-brand:hover {
+  color: #4CAF50;
+}
+nav.navbar .navbar-brand::after {
+  content: "";
+  width: 0px;
+  height: 3px;
+  display: block;
+  background: #4CAF50;
+  transition: 300ms;
+}
+nav.navbar .navbar-brand:hover::after {
+  width: 100%;
+}
+nav.navbar ul.navbar-nav .nav-link {
+  font-size: 15px;
+}
+nav.navbar .login-right a {
+  color: #16161a;
+  transition: 0.3s;
+  font-size: 15px;
+}
+nav.navbar .login-right a:hover {
+  text-decoration: none;
+  color: #4CAF50;
+  transition: 0.3s;
+}
+nav.navbar .login-right a:first-child {
+  border-right: solid #16161a 1px;
+}
+
+/*# sourceMappingURL=style.css.map */

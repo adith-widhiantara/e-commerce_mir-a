@@ -1,0 +1,42 @@
+nav.navbar{
+  .navbar-brand{
+    font-weight: bold;
+    color: $green500;
+    &:hover{
+      color: $green500;
+    }
+    &::after{
+      content: '';
+      width: 0px;
+      height: 3px;
+      display: block;
+      background: $green500;
+      transition: 300ms;
+    }
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  ul.navbar-nav{
+    .nav-link{
+      font-size: 15px;
+    }
+  }
+
+  .login-right{
+    a{
+      color: $black;
+      transition: .3s;
+      font-size: 15px;
+      &:hover{
+        text-decoration: none;
+        color: $green500;
+        transition: .3s;
+      }
+      &:first-child{
+        border-right: solid $black 1px;
+      }
+    }
+  }
+}
