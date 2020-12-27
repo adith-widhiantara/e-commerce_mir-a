@@ -5,7 +5,7 @@
         <div class="hero__categories">
           <div class="hero__categories__all">
             <i class="fa fa-bars"></i>
-            <span>All departments</span>
+            <span>Macam Barang</span>
           </div>
           <ul>
             <li>
@@ -48,12 +48,8 @@
         <div class="hero__search">
           <div class="hero__search__form">
             <form action="#">
-              <div class="hero__search__categories">
-                All Categories
-                <span class="arrow_carrot-down"></span>
-              </div>
-              <input type="text" placeholder="What do yo u need?">
-              <button type="submit" class="site-btn">SEARCH</button>
+              <input type="text" placeholder="Apa yang anda cari?">
+              <button type="submit" class="site-btn">Cari</button>
             </form>
           </div>
           <div class="hero__search__phone">
@@ -63,17 +59,19 @@
               </a>
             </div>
             <div class="hero__search__phone__text">
-              <h5>+65 11.188.888</h5>
-              <span>support 24/7 time</span>
+              <a target="_blank" href="http://wa.me/6285707095995">
+                <h5>+628570709595</h5>
+                <span>Hubungi via whatsapp</span>
+              </a>
             </div>
           </div>
         </div>
-        <div class="hero__item set-bg" data-setbg="{{ asset('img/ogani/hero/banner.jpg') }}">
+        <div class="hero__item set-bg" data-setbg="{{ asset('img/banner/banner.png') }}">
           <div class="hero__text">
-            <span>FRUIT FRESH</span>
-            <h2>Vegetable <br />100% Organic</h2>
-            <p>Free Pickup and Delivery Available</p>
-            <a href="#" class="primary-btn">SHOP NOW</a>
+            <span>Mir'a Collection</span>
+            <h2>Pernak-Pernik<br />Tasbih, dan lain-lain</h2>
+            <p>Kediri, Jawa Timur</p>
+            <a href="#" class="primary-btn">Beli Sekarang</a>
           </div>
         </div>
       </div>

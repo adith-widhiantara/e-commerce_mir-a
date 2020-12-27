@@ -2,7 +2,7 @@
 <div class="humberger__menu__wrapper">
   <div class="humberger__menu__logo">
     <a href="#">
-      <img src="{{ asset('img/ogani/logo.png') }}" alt="">
+      <img src="{{ asset('img/logo.png') }}" alt="">
     </a>
   </div>
   <div class="humberger__menu__cart">

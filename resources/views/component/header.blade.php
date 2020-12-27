@@ -5,8 +5,12 @@
         <div class="col-lg-6 col-md-6">
           <div class="header__top__left">
             <ul>
-              <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-              <li>Free Shipping for all Order of $99</li>
+              <li>
+                <a target="_blank" href="http://wa.me/6285707095995">
+                  <i class="fab fa-whatsapp"></i>
+                  Hubungi via Whatsapp
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -19,31 +23,10 @@
               <a href="#">
                 <i class="fab fa-instagram"></i>
               </a>
-              <a href="#">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#">
-                <i class="fab fa-pinterest-p"></i>
-              </a>
-            </div>
-            <div class="header__top__right__language">
-              <img src="{{ asset('img/ogani/language.png') }}" alt="">
-              <div>
-                English
-              </div>
-              <span class="arrow_carrot-down"></span>
-              <ul>
-                <li>
-                  <a href="#">Spanis</a>
-                </li>
-                <li>
-                  <a href="#">English</a>
-                </li>
-              </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#">
-                  <i class="fa fa-user"></i> Login
+                <a href="{{ route('login') }}">
+                  <i class="fa fa-user"></i> Masuk
                 </a>
             </div>
           </div>
@@ -56,7 +39,7 @@
       <div class="col-lg-3">
         <div class="header__logo">
           <a href="./index.html">
-            <img src="{{ asset('img/ogani/logo.png') }}" alt="">
+            <img src="{{ asset('img/logo/logo2.png') }}" alt="">
           </a>
         </div>
       </div>
@@ -99,15 +82,9 @@
         <div class="header__cart">
           <ul>
             <li>
-              <a href="#"><i class="fa fa-heart"></i> <span>1</span></a>
-            </li>
-            <li>
               <a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a>
             </li>
           </ul>
-          <div class="header__cart__price">
-            item: <span>$150.00</span>
-          </div>
         </div>
       </div>
     </div>

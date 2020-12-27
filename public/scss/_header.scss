@@ -9,7 +9,6 @@
     padding: 10px 0 13px;
 
     ul {
-
         li {
             font-size: 14px;
             color: #1c1c1c;
@@ -24,7 +23,7 @@
                 height: 20px;
                 width: 1px;
                 background: $black-color;
-                opacity: .1;
+                opacity: 0.1;
                 content: "";
             }
 
@@ -36,7 +35,8 @@
                 }
             }
 
-            i {
+            i,
+            a {
                 color: $heading-color-2;
                 margin-right: 5px;
             }
@@ -61,7 +61,7 @@
         height: 20px;
         width: 1px;
         background: $black-color;
-        opacity: .1;
+        opacity: 0.1;
         content: "";
     }
 
@@ -84,7 +84,6 @@
     cursor: pointer;
 
     &:hover {
-
         ul {
             top: 23px;
             opacity: 1;
@@ -99,7 +98,7 @@
         height: 20px;
         width: 1px;
         background: $black-color;
-        opacity: .1;
+        opacity: 0.1;
         content: "";
     }
 
@@ -132,7 +131,7 @@
         z-index: 9;
         opacity: 0;
         visibility: hidden;
-        @include transition(all, .3s);
+        @include transition(all, 0.3s);
 
         li {
             list-style: none;
@@ -172,7 +171,6 @@
     padding: 24px 0;
 
     ul {
-
         li {
             list-style: none;
             display: inline-block;
@@ -187,7 +185,7 @@
                 width: 180px;
                 z-index: 9;
                 padding: 5px 0;
-                @include transition(all, .3s);
+                @include transition(all, 0.3s);
                 opacity: 0;
                 visibility: hidden;
 
@@ -196,8 +194,7 @@
                     display: block;
 
                     &:hover {
-
-                        &>a {
+                        & > a {
                             color: $primary-color;
                         }
                     }
@@ -212,21 +209,19 @@
             }
 
             &.active {
-
                 a {
                     color: $primary-color;
                 }
             }
 
             &:hover {
-
                 .header__menu__dropdown {
                     top: 30px;
                     opacity: 1;
                     visibility: visible;
                 }
 
-                &>a {
+                & > a {
                     color: $primary-color;
                 }
             }
@@ -241,7 +236,7 @@
                 text-transform: uppercase;
                 font-weight: 700;
                 letter-spacing: 2px;
-                @include transition(all, .3s);
+                @include transition(all, 0.3s);
                 padding: 5px 0;
                 display: block;
             }
