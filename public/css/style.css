@@ -4,6 +4,22 @@ body {
   font-family: "DM Sans", sans-serif;
 }
 
+section.latest-product .latest-product__item__pic img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+}
+
+.humberger__menu__wrapper .humberger__menu__contact ul li a {
+  color: #16161a;
+}
+
+section.loginPage form button.btn {
+  color: #fff;
+  background-color: #7fad39;
+  border-color: #7fad39;
+}
+
 /******************************************************************
   Template Name: Ogani
   Description:  Ogani eCommerce  HTML Template

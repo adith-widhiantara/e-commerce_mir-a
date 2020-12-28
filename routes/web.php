@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// HomeController
-Route::get('/', function(){
-  return view('home.landing');
-});
+// LandingController
+Route::get('/', 'LandingController@index')->name('landing.index');
 
 Auth::routes();
 

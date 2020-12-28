@@ -31,35 +31,15 @@
       @include('component.header')
     <!-- end burger & header -->
 
-    <!-- hero -->
-      @include('component.hero')
-    <!-- end hero -->
-
     <!-- categories -->
       @include('component.categories')
     <!-- end categories -->
 
-    <!-- featured -->
-      @include('component.featured')
-    <!-- end featured -->
-
-    <!-- banner -->
-      @include('component.banner')
-    <!-- end banner -->
-
-    <!-- lastProduct -->
-      @include('component.lastProduct')
-    <!-- end lastProduct -->
-
-    <!-- blog -->
-      @include('component.blog')
-    <!-- end blog -->
+    @yield('base')
 
     <!-- footer -->
       @include('component.footer')
     <!-- end footer -->
-
-    @yield('base')
 
     <!-- Optional JavaScript; choose one of the two! -->
 

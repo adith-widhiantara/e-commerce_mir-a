@@ -25,9 +25,19 @@
               </a>
             </div>
             <div class="header__top__right__auth">
+              @if (url()->current() == route('landing.index'))
                 <a href="{{ route('login') }}">
                   <i class="fa fa-user"></i> Masuk
                 </a>
+              @elseif (url()->current() == route('login'))
+                <a href="{{ route('register') }}">
+                  <i class="fa fa-user"></i> Daftar
+                </a>
+              @elseif (url()->current() == route('register'))
+                <a href="{{ route('login') }}">
+                  <i class="fa fa-user"></i> Masuk
+                </a>
+              @endif
             </div>
           </div>
         </div>
@@ -38,7 +48,7 @@
     <div class="row">
       <div class="col-lg-3">
         <div class="header__logo">
-          <a href="./index.html">
+          <a href="{{ route('landing.index') }}">
             <img src="{{ asset('img/logo/logo2.png') }}" alt="">
           </a>
         </div>
@@ -47,7 +57,7 @@
         <nav class="header__menu">
           <ul>
             <li class="active">
-              <a href="./index.html">Home</a>
+              <a href="{{ route('landing.index') }}">Home</a>
             </li>
             <li>
               <a href="./shop-grid.html">Shop</a>
