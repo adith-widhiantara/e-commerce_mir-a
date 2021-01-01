@@ -6,10 +6,10 @@
 
 @section('base')
 <!-- breadcrumb -->
-  @include('page.shop.detailShop.1breadcumb')
+  {{ Breadcrumbs::render('shop.show', 1) }}
 <!-- end breadcrumb -->
 
 <!-- detail -->
-  @include('page.shop.detailShop.2detail')
+  @include('page.shop.detailShop.1detail')
 <!-- end detail -->
 @endsection
