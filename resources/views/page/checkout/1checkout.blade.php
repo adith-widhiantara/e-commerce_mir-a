@@ -1,4 +1,4 @@
-<div class="col-lg-8 col-md-6">
+<div class="col-lg-6">
   <div class="checkout__input">
     <p>Nama<span>*</span></p>
     <input type="text">

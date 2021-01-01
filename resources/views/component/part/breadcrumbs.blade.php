@@ -5,7 +5,7 @@
   <section class="breadcrumb-section set-bg" data-setbg="{{ asset('img/breadcumb/breadcumb2.png') }}">
   @elseif (url()->current() == route('cart.index'))
   <section class="breadcrumb-section set-bg" data-setbg="{{ asset('img/breadcumb/breadcumb3.png') }}">
-  @elseif (url()->current() == route('checkout.index'))
+  @else
   <section class="breadcrumb-section set-bg" data-setbg="{{ asset('img/breadcumb/breadcumb4.png') }}">
   @endif
     <div class="container">

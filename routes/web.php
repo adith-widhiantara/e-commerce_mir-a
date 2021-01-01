@@ -28,4 +28,7 @@ Route::resource('shop', 'ShopController');
 Route::resource('cart', 'CartController');
 
 // CheckoutController
+Route::prefix('checkout')->group(function () {
+  Route::get('payment', 'CheckoutController@dropboxPayment')->name('checkout.dropboxPayment');
+});
 Route::resource('checkout', 'CheckoutController');

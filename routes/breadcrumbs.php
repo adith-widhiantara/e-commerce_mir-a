@@ -28,3 +28,9 @@ Breadcrumbs::for('checkout.index', function ($trail) {
     $trail->parent('cart.index');
     $trail->push('Pembayaran', route('checkout.index'));
 });
+
+// landing.index > cart.index > checkout.index > checkout.dropboxPayment
+Breadcrumbs::for('checkout.dropboxPayment', function ($trail) {
+    $trail->parent('checkout.index');
+    $trail->push('Upload bukti pembayaran', route('checkout.dropboxPayment'));
+});

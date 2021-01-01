@@ -16,6 +16,11 @@ class CheckoutController extends Controller
       return view('page.checkout.index');
     }
 
+    public function dropboxPayment()
+    {
+      return view('page.checkout.payment.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
