@@ -1,4 +1,8 @@
-<section class="hero">
+<section class="hero
+  @if (url()->current() != route('landing.index'))
+    hero-normal
+  @endif
+">
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
@@ -7,23 +11,7 @@
             <i class="fa fa-bars"></i>
             <span>Macam Barang</span>
           </div>
-          <ul>
-            <li>
-              <a href="#">Tasbih</a>
-            </li>
-            <li>
-              <a href="#">Bros</a>
-            </li>
-            <li>
-              <a href="#">Baju Muslim</a>
-            </li>
-            <li>
-              <a href="#">Kopiah</a>
-            </li>
-            <li>
-              <a href="#">Kerudung</a>
-            </li>
-          </ul>
+          @include('component.part.categoriesPart')
         </div>
       </div>
       <div class="col-lg-9">
@@ -36,7 +24,7 @@
           </div>
           <div class="hero__search__phone">
             <div class="hero__search__phone__icon">
-              <a href="#">
+              <a target="_blank" href="http://wa.me/6285707095995">
                 <i class="fa fa-phone"></i>
               </a>
             </div>
@@ -49,12 +37,12 @@
           </div>
         </div>
         @if (url()->current() == route('landing.index'))
-          <div class="hero__item set-bg" data-setbg="{{ asset('img/banner/banner.png') }}">
+          <div id="myNavbar" class="hero__item set-bg" data-setbg="{{ asset('img/banner/banner.png') }}">
             <div class="hero__text">
               <span>Mir'a Collection</span>
               <h2>Pernak-Pernik<br />Tasbih, dan lain-lain</h2>
               <p>Kediri, Jawa Timur</p>
-              <a href="#" class="primary-btn">Beli Sekarang</a>
+              <a href="#featured" class="primary-btn">Beli Sekarang</a>
             </div>
           </div>
         @endif

@@ -24,15 +24,15 @@
                   <span>$30.00</span>
                 </div>
               </a>
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="{{ asset('img/featured/featured3.png') }}" alt="">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Baju Putih Kerudung Merah</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
+              <a href="#" class="latest-product__item">
+                <div class="latest-product__item__pic">
+                  <img src="{{ asset('img/featured/featured3.png') }}" alt="">
+                </div>
+                <div class="latest-product__item__text">
+                  <h6>Baju Putih Kerudung Merah</h6>
+                  <span>$30.00</span>
+                </div>
+              </a>
             </div>
             <div class="latest-prdouct__slider__item">
               <a href="#" class="latest-product__item">

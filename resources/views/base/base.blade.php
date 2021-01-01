@@ -63,5 +63,24 @@
       <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
       <script src="{{ asset('js/main.js') }}"></script>
     <!-- End JavaScript -->
+
+    @if (url()->current() == route('landing.index'))
+    <script>
+      $(document).ready(function(){
+        $("#myNavbar a").on('click', function(event) {
+          if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 800, function(){
+              window.location.hash = hash;
+            });
+          }
+        });
+      });
+    </script>
+    @endif
   </body>
 </html>

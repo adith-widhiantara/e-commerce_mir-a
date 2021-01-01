@@ -25,7 +25,9 @@
           </ul>
           <ul>
             <li>
-              <a href="#">Hubungi Saya</a>
+              <a target="_blank" href="http://wa.me/6285707095995">
+                Hubungi Saya
+              </a>
             </li>
             <li>
               <a href="#">Testimoni</a>
@@ -37,15 +39,7 @@
         <div class="footer__widget">
           <h6>Sosial Media Saya</h6>
           <div class="footer__widget__social">
-            <a href="#">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-whatsapp"></i>
-            </a>
+            @include('component.part.sosialMedia')
           </div>
         </div>
       </div>

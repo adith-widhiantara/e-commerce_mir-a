@@ -18,4 +18,14 @@ Route::get('/', 'LandingController@index')->name('landing.index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// HomeController
+// Route::get('home', 'HomeController@index')->name('home');
+
+// ShopController
+Route::resource('shop', 'ShopController');
+
+// CartController
+Route::resource('cart', 'CartController');
+
+// CheckoutController
+Route::resource('checkout', 'CheckoutController');

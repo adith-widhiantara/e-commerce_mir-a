@@ -1,4 +1,4 @@
-<section class="featured spad">
+<section id="featured" class="featured spad">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

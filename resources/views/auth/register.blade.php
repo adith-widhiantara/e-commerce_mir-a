@@ -3,7 +3,11 @@
 @section('title', 'Masuk')
 
 @section('base')
-<section class="container loginPage">
+<!-- breadcumb -->
+  @include('auth.component.1breadcumb')
+<!-- end breadcumb -->
+
+<section class="container mb-5 loginPage">
   <div class="row">
     <div class="col-lg-6 offset-lg-3">
       <form>
