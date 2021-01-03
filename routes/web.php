@@ -32,3 +32,12 @@ Route::prefix('checkout')->group(function () {
   Route::get('payment', 'CheckoutController@dropboxPayment')->name('checkout.dropboxPayment');
 });
 Route::resource('checkout', 'CheckoutController');
+
+// UserController
+Route::prefix('user')->group(function () {
+  Route::get('status', 'UserController@status')->name('user.status');
+});
+Route::resource('user', 'UserController');
+
+// AdminController
+Route::resource('admin', 'AdminController');

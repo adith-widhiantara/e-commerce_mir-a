@@ -34,3 +34,15 @@ Breadcrumbs::for('checkout.dropboxPayment', function ($trail) {
     $trail->parent('checkout.index');
     $trail->push('Upload bukti pembayaran', route('checkout.dropboxPayment'));
 });
+
+// landing.index > user.show
+Breadcrumbs::for('user.show', function ($trail, $user) {
+    $trail->parent('landing.index');
+    $trail->push('Nama User', route('user.show', 1));
+});
+
+// landing.index > user.status
+Breadcrumbs::for('user.status', function ($trail, $user) {
+    $trail->parent('user.show', 1);
+    $trail->push('Pesanan Saya', route('user.status'));
+});

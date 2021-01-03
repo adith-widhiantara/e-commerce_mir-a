@@ -56,6 +56,20 @@ section.latest-product .latest-product__item__pic img,
   }
 }
 
+.checkout .checkout__form button.btn.btn-block {
+  color: #ffffff;
+  background-color: #7fad39;
+}
+
+div#tabs .ui-state-active {
+  background-color: #7fad39;
+  border-color: #79a633;
+}
+
+.progress .progress-bar {
+  background-color: #7fad39;
+}
+
 section.loginPage form button.btn {
   color: #fff;
   background-color: #7fad39;

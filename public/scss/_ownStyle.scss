@@ -63,3 +63,25 @@ section.latest-product,
         }
     }
 }
+
+.checkout {
+    .checkout__form {
+        button.btn.btn-block {
+            color: $white;
+            background-color: $primary-color;
+        }
+    }
+}
+
+div#tabs {
+    .ui-state-active {
+        background-color: $primary-color;
+        border-color: #79a633;
+    }
+}
+
+.progress {
+    .progress-bar {
+        background-color: $primary-color;
+    }
+}

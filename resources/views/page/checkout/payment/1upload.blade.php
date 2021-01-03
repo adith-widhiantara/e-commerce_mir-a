@@ -61,7 +61,7 @@
           <label class="btn btn-primary btn-block" for="input-file" role="button">
             Unggah Bukti Pembayaran
           </label>
-          <button type="submit" class="btn btn-success btn-block">Simpan</button>
+          <button type="submit" class="btn btn-block">Simpan</button>
           <div class="preview-box"></div>
         </form>
       </div>
