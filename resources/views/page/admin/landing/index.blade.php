@@ -47,22 +47,16 @@ $title = "Halaman Utama Admin"
 <script>
 var donutData        = {
   labels: [
-      'Chrome',
-      'IE',
-      'FireFox',
-      'Safari',
-      'Opera',
-      'Navigator',
+    @foreach( $categories as $cat )
+      '{{ $cat -> name }}',
+    @endforeach
   ],
   datasets: [
     {
       data: [
-        700,
-        500,
-        400,
-        600,
-        300,
-        100
+        @foreach( $categories as $count )
+          {{ $count -> product -> count() }},
+        @endforeach
       ],
       backgroundColor : [
         '#f56954',
@@ -70,7 +64,6 @@ var donutData        = {
         '#f39c12',
         '#00c0ef',
         '#3c8dbc',
-        '#d2d6de'
       ],
     }
   ]

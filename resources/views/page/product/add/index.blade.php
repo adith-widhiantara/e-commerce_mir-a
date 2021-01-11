@@ -36,8 +36,8 @@ $title = "Tambah Produk"
       </div>
       <form>
         <div class="card-body">
-          <label for="ProsesTambahProduk">Proses Tambah Produk</label>
           <div class="form-group">
+            <label for="ProsesTambahProduk">Proses Tambah Produk</label>
             <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
             </div>

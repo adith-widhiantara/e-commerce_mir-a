@@ -32,8 +32,6 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
         <li class="nav-item">
           @if (url()->current() == route('admin.index'))
           <a href="#" class="nav-link active">
@@ -46,7 +44,8 @@
             </p>
           </a>
         </li>
-        @if (url()->current() == route('product.index'))
+
+        @if (url()->current() == route('product.index') || url()->current() == route('product.create'))
         <li class="nav-item menu-open">
           <a href="#" class="nav-link active">
         @else
@@ -62,7 +61,7 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               @if (url()->current() == route('product.index'))
-              <a href="{{ route('product.index') }}" class="nav-link active">
+              <a href="#" class="nav-link active">
               @else
               <a href="{{ route('product.index') }}" class="nav-link">
               @endif
@@ -71,13 +70,31 @@
               </a>
             </li>
             <li class="nav-item">
+              @if (url()->current() == route('product.create'))
+              <a href="#" class="nav-link active">
+              @else
               <a href="{{ route('product.create') }}" class="nav-link">
+              @endif
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tambah Produk</p>
               </a>
             </li>
           </ul>
         </li>
+
+        <li class="nav-item">
+          @if (url()->current() == route('categories.index'))
+          <a href="#" class="nav-link active">
+          @else
+          <a href="{{ route('categories.index') }}" class="nav-link">
+          @endif
+            <i class="fas fa-chart-bar"></i>
+            <p>
+              Kategori
+            </p>
+          </a>
+        </li>
+
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
@@ -87,6 +104,7 @@
             </p>
           </a>
         </li>
+
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-truck-loading"></i>
@@ -152,15 +170,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="fas fa-chart-pie"></i>
-            <p>
-              Ulasan
-              <!-- <span class="right badge badge-danger">Baru</span> -->
-            </p>
-          </a>
-        </li>
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

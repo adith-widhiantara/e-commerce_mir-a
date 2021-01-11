@@ -84,9 +84,21 @@
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-bell"></i>
+        @if( \App\product::where('stock', '<', 1)->get()->count() != 0 )
+        <span class="badge badge-danger navbar-badge">{{ \App\product::where('stock', '<', 1)->get()->count() }}</span>
+        @endif
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">Status Pesanan</span>
+        <div class="dropdown-divider"></div>
+        @if( \App\product::where('stock', '<', 1)->get()->count() != 0 )
+        <a href="{{ route('product.index') }}#lowtable" class="dropdown-item">
+        @else
+        <a href="#" class="dropdown-item">
+        @endif
+          <i class="fas fa-exclamation mr-2"></i> Stok Barang Sedikit
+          <span class="float-right text-muted text-sm">{{ \App\product::where('stock', '<', 1)->get()->count() }}</span>
+        </a>
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item">
           <i class="fas fa-envelope mr-2"></i> Belum Dikonfirmasi

@@ -1,9 +1,9 @@
-<div class="card">
+<div class="card" id="lowtable">
   <div class="card-header">
-    <h3 class="card-title">{{ $title }}</h3>
+    <h3 class="card-title">{{ __('Daftar Barang Sedikit') }}</h3>
   </div>
   <div class="card-body">
-    <table id="example1" class="table table-bordered table-striped">
+    <table id="example2" class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>Nomor</th>
@@ -14,22 +14,22 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($product as $pro)
+        @foreach($lowStockProduct as $prolow)
           <tr>
             <td>{{ $loop -> iteration }}</td>
             <td>
-              <a href="{{ route('product.show', $pro->slug) }}">
-                {{ $pro -> name }}
+              <a href="{{ route('product.show', $prolow->slug) }}">
+                {{ $prolow -> name }}
               </a>
             </td>
             <td>
-              {{ $pro -> price }}
+              {{ $prolow -> price }}
             </td>
             <td>
-              {{ $pro -> stock }}
+              {{ $prolow -> stock }}
             </td>
             <td>
-              {{ $pro -> sold }}
+              {{ $prolow -> sold }}
             </td>
           </tr>
         @endforeach

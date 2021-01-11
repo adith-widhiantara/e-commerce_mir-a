@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Categories;
-use App\product;
 
-class AdminController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +13,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-      $categories = Categories::all();
-      $highestSoldProduct = product::orderBy('sold', 'desc')->take(4)->get();
-      $countLowStock = product::where('stock', '<', 1)->get();
-      return view('page.admin.landing.index', compact('categories', 'highestSoldProduct', 'countLowStock'));
+      return view('page.categories.landing.index');
     }
 
     /**

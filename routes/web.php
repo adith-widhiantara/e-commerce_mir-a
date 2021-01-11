@@ -41,3 +41,6 @@ Route::resource('admin', 'AdminController');
 
 // ProductController
 Route::resource('product', 'ProductController');
+
+// CategoriesController
+Route::resource('categories', 'CategoriesController');

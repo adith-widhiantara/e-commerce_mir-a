@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\product;
+use App\Categories;
 
 class ProductController extends Controller
 {
@@ -13,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-      return view('page.product.landing.index');
+      $product = product::orderBy('id', 'desc')->get();
+      $lowStockProduct = product::where('stock', '<', 1)->get();
+      return view('page.product.landing.index', compact('product', 'lowStockProduct'));
     }
 
     /**
@@ -43,9 +47,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+      $product = product::where('slug', $slug)->firstOrFail();
+      $allCategories = Categories::orderBy('id', 'asc')->get();
+
+      $procat = $product->categories;
+      $wto = $allCategories->diff($procat);
+      return view('page.product.show.index', compact('product', 'allCategories', 'wto'));
     }
 
     /**
