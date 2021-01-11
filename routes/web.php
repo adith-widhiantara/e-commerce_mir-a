@@ -18,9 +18,6 @@ Route::get('/', 'LandingController@index')->name('landing.index');
 
 Auth::routes();
 
-// HomeController
-// Route::get('home', 'HomeController@index')->name('home');
-
 // ShopController
 Route::resource('shop', 'ShopController');
 
@@ -41,3 +38,6 @@ Route::resource('user', 'UserController');
 
 // AdminController
 Route::resource('admin', 'AdminController');
+
+// ProductController
+Route::resource('product', 'ProductController');

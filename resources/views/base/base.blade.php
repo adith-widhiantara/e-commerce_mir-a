@@ -23,7 +23,9 @@
   </head>
   <body>
     <!-- Preloader -->
+    {{--
       @include('component.preloader')
+      --}}
     <!-- End Preloader -->
 
     <!-- burger & header -->

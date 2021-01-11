@@ -19,3 +19,17 @@
   </div>
 </section>
 @endsection
+
+@section('JavaScript')
+<script>
+  $(document).ready(function(){
+    $('.pro-qty .inc').click(function(){
+      
+    });
+
+    $('.pro-qty .dec').click(function(){
+      
+    });
+  });
+</script>
+@endsection
