@@ -1,10 +1,6 @@
 @extends('base.admin')
 
-<?php
-$title = "Daftar Produk"
-?>
-
-@section('title', $title)
+@section('title', $categories->name)
 
 @section('style')
   <link rel="stylesheet" href="{{ asset('lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -17,11 +13,12 @@ $title = "Daftar Produk"
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">{{ $title }}</h1>
+        <h1 class="m-0">{{ $categories->name }}</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item active">{{ $title }}</li>
+          <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Daftar Kategori</a></li>
+          <li class="breadcrumb-item active">{{ $categories->name }}</li>
         </ol>
       </div>
     </div>
@@ -30,15 +27,9 @@ $title = "Daftar Produk"
 @endsection
 
 @section('base')
-<!-- all table -->
-  @include('page.product.landing.1table')
-<!-- End all table -->
-
-<!-- low stock table -->
-  @if( \App\product::where('stock', '<', 1)->get()->count() != 0 )
-    @include('page.product.landing.2lowTable')
-  @endif
-<!-- end low stock table -->
+<!-- table -->
+  @include('page.categories.show.1table')
+<!-- end table -->
 @endsection
 
 @section('script')
@@ -65,10 +56,6 @@ $(function () {
     "responsive": true, "lengthChange": false, "autoWidth": false,
     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
   }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-  $("#example2").DataTable({
-    "responsive": true, "lengthChange": false, "autoWidth": false,
-    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-  }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
 });
 </script>
 @endsection

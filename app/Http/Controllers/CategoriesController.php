@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Categories;
+
 class CategoriesController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-      return view('page.categories.landing.index');
+      $categories = Categories::all();
+      return view('page.categories.landing.index', compact('categories'));
     }
 
     /**
@@ -45,7 +48,9 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+      $categories = Categories::where('id', $id)->firstOrFail();
+      $product = $categories->product;
+      return view('page.categories.show.index', compact('categories', 'product'));
     }
 
     /**
