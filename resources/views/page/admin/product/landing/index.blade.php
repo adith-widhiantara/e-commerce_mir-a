@@ -31,12 +31,12 @@ $title = "Daftar Produk"
 
 @section('base')
 <!-- all table -->
-  @include('page.product.landing.1table')
+  @include('page.admin.product.landing.1table')
 <!-- End all table -->
 
 <!-- low stock table -->
   @if( \App\product::where('stock', '<', 1)->get()->count() != 0 )
-    @include('page.product.landing.2lowTable')
+    @include('page.admin.product.landing.2lowTable')
   @endif
 <!-- end low stock table -->
 @endsection

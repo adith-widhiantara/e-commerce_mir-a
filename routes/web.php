@@ -36,11 +36,20 @@ Route::prefix('user')->group(function () {
 });
 Route::resource('user', 'UserController');
 
-// AdminController
-Route::resource('admin', 'AdminController');
+Route::namespace('Admin')->group(function () {
+  Route::prefix('admin')->group(function () {
+    // ProductController (Admin)
+    Route::resource('product', 'ProductController');
 
-// ProductController
-Route::resource('product', 'ProductController');
+    // CategoriesController
+    Route::resource('categories', 'CategoriesController');
 
-// CategoriesController
-Route::resource('categories', 'CategoriesController');
+    // AdminController (Biodata)
+    Route::prefix('biodata')->group(function() {
+      Route::get('', 'AdminController@biodata')->name('index.biodata.admin');
+    });
+  });
+
+  // AdminController
+  Route::resource('admin', 'AdminController');
+});

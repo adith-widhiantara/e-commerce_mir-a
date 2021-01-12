@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\product;
 use App\Categories;
 
-class CategoriesController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-      $categories = Categories::all();
-      return view('page.categories.landing.index', compact('categories'));
+      $product = product::orderBy('id', 'desc')->get();
+      $lowStockProduct = product::where('stock', '<', 1)->get();
+      return view('page.admin.product.landing.index', compact('product', 'lowStockProduct'));
     }
 
     /**
@@ -26,7 +29,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+      return view('page.admin.product.add.index');
     }
 
     /**
@@ -46,11 +49,14 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-      $categories = Categories::where('id', $id)->firstOrFail();
-      $product = $categories->product;
-      return view('page.categories.show.index', compact('categories', 'product'));
+      $product = product::where('slug', $slug)->firstOrFail();
+      $allCategories = Categories::orderBy('id', 'asc')->get();
+
+      $procat = $product->categories;
+      $wto = $allCategories->diff($procat);
+      return view('page.admin.product.show.index', compact('product', 'allCategories', 'wto'));
     }
 
     /**

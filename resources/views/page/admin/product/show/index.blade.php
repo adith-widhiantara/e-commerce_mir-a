@@ -24,12 +24,12 @@
 <div class="row">
   <div class="col-12 col-md-6 mb-5">
     <!-- img -->
-      @include('page.product.show.1img')
+      @include('page.admin.product.show.1img')
     <!-- end img -->
   </div>
   <div class="col-12 col-md-6 mb-5">
     <!-- form -->
-      @include('page.product.show.2form')
+      @include('page.admin.product.show.2form')
     <!-- end form -->
   </div>
 </div>

@@ -1,12 +1,12 @@
 @extends('base.base')
 
 @section('title')
-  Judul Produk
+  {{$product -> name}}
 @endsection
 
 @section('base')
 <!-- breadcrumb -->
-  {{ Breadcrumbs::render('shop.show', 1) }}
+  {{ Breadcrumbs::render('shop.show', $product) }}
 <!-- end breadcrumb -->
 
 <!-- detail -->

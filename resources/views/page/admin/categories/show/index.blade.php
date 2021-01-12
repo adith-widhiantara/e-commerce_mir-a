@@ -28,7 +28,7 @@
 
 @section('base')
 <!-- table -->
-  @include('page.categories.show.1table')
+  @include('page.admin.categories.show.1table')
 <!-- end table -->
 @endsection
 

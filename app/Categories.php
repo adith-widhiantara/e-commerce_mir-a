@@ -8,6 +8,7 @@ class Categories extends Model
 {
   protected $fillable=[
     'name',
+    'slug',
   ];
 
   public function product()

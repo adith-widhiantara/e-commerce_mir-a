@@ -31,7 +31,7 @@ $title = "Daftar Kategori"
 
 @section('base')
 <!-- all table -->
-  @include('page.categories.landing.1table')
+  @include('page.admin.categories.landing.1table')
 <!-- end all table -->
 @endsection
 

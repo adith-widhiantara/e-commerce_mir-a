@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Categories;
 use App\product;
 
@@ -19,6 +21,11 @@ class AdminController extends Controller
       $highestSoldProduct = product::orderBy('sold', 'desc')->take(4)->get();
       $countLowStock = product::where('stock', '<', 1)->get();
       return view('page.admin.landing.index', compact('categories', 'highestSoldProduct', 'countLowStock'));
+    }
+
+    public function biodata()
+    {
+      return view('page.admin.biodata.index');
     }
 
     /**
@@ -39,7 +46,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      return $request;
     }
 
     /**

@@ -14,7 +14,7 @@ Breadcrumbs::for('shop.index', function ($trail) {
 // landing.index > shop.index > shop.show
 Breadcrumbs::for('shop.show', function ($trail, $product) {
     $trail->parent('shop.index');
-    $trail->push('Nama Produk', route('shop.show', 1));
+    $trail->push( $product->name , route('shop.show', $product->slug));
 });
 
 // landing.index > cart.index

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Product;
+use App\Categories;
+
 class ShopController extends Controller
 {
     /**
@@ -13,7 +16,10 @@ class ShopController extends Controller
      */
     public function index()
     {
-      return view('page.shop.listShop.index');
+      $product = Product::orderBy('id', 'desc')->paginate(12);
+      $newProduct = Product::orderBy('id', 'desc')->take(6)->get();
+
+      return view('page.shop.listShop.index', compact('product', 'newProduct'));
     }
 
     /**
@@ -43,9 +49,10 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-      return view('page.shop.detailShop.index');
+      $product = Product::where('slug', $slug)->firstOrFail();
+      return view('page.shop.detailShop.index', compact('product'));
     }
 
     /**

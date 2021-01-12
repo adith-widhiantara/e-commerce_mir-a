@@ -45,6 +45,15 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a href="{{ route('index.biodata.admin') }}" class="nav-link">
+            <i class="nav-icon fas fa-sliders-h"></i>
+            <p>
+              Biodata Website
+            </p>
+          </a>
+        </li>
+
         @if (url()->current() == route('product.index') || url()->current() == route('product.create'))
         <li class="nav-item menu-open">
           <a href="#" class="nav-link active">
@@ -100,7 +109,6 @@
             <i class="nav-icon fas fa-users"></i>
             <p>
               Daftar Pengguna
-              <!-- <span class="right badge badge-danger">Baru</span> -->
             </p>
           </a>
         </li>

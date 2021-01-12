@@ -1,4 +1,4 @@
-<section class="breadcrumb-section set-bg mb-5" data-setbg="{{ asset('img/breadcumbs.png') }}">
+<section class="breadcrumb-section set-bg mb-5" data-setbg="{{ asset('img/breadcumb/breadcumb1.png') }}">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
