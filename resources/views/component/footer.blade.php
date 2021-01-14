@@ -7,8 +7,8 @@
             <a href="{{ route('landing.index') }}"><img src="{{ asset('img/logo/logo2.png') }}" alt=""></a>
           </div>
           <ul>
-            <li>Alamat: 60-49 Road 11378 New York</li>
-            <li>Phone: +62857 0709 5995</li>
+            <li>Alamat: {{ \App\Biodata::where('name', 'alamat')->first()->keterangan }}</li>
+            <li>Nomor Telepon: +{{ \App\Biodata::where('name', 'nomorTelepon')->first()->keterangan }}</li>
           </ul>
         </div>
       </div>

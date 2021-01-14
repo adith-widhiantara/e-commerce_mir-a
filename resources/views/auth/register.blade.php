@@ -10,7 +10,7 @@
 <section class="container mb-5 loginPage">
   <div class="row">
     <div class="col-lg-6 offset-lg-3">
-      <form class="" action="{{ route('admin.store') }}" method="post">
+      <form class="" action="{{ route('register') }}" method="post">
         @csrf
         <div class="form-group">
           <label for="usernameInput">Nama</label>
@@ -24,10 +24,7 @@
           <label for="passwordInput">Kata Sandi</label>
           <input type="password" class="form-control" id="passwordInput" name="password">
         </div>
-        <div class="form-group">
-          <label for="passwordInputKonfirmasi">Kata Sandi Konfirmasi</label>
-          <input type="password" class="form-control" id="passwordInputKonfirmasi" name="password_confirmation">
-        </div>
+
         <button type="submit" class="btn float-right">Daftar</button>
       </form>
     </div>

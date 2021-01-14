@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
+use App\User;
+use App\Biodata;
 use App\Categories;
 use App\product;
 
@@ -25,7 +29,74 @@ class AdminController extends Controller
 
     public function biodata()
     {
-      return view('page.admin.biodata.index');
+      $user = Auth::user();
+      return view('page.admin.biodata.index', compact('user'));
+    }
+
+    public function biodataAdmin(Request $request)
+    {
+      $user = Auth::user();
+      if ($request->file('photo') != null) {
+        $photo = $request->file('photo');
+        $namaPhoto = $photo->getClientOriginalName();
+        $tujuan_upload = 'img/upload/fotoProfil';
+        $photo->move($tujuan_upload, $namaPhoto);
+        User::where('id', $user->id)
+            ->update([
+              'photo' => $namaPhoto,
+            ]);
+      }
+
+      if ($request->password != null) {
+        User::where('id', $user->id)
+            ->update([
+              'password' => Hash::make($request->password),
+            ]);
+      }
+
+      User::where('id', $user->id)
+          ->update([
+            'name' => $request -> name,
+            'email' => $request -> email,
+          ]);
+
+      return redirect()->route('admin.biodata.index');
+    }
+
+    public function biodataWebsite(Request $request)
+    {
+      $request->validate([
+        'alamat' => 'required',
+        'nomorTelepon' => 'required|numeric',
+        'instagram' => 'required',
+        'facebook' => 'required',
+      ]);
+
+      $user = Auth::user();
+      User::where('id', $user->id)
+          ->update([
+            'alamat' => $request -> alamat,
+            'nomorTelepon' => $request -> nomorTelepon,
+          ]);
+
+      Biodata::where('name', 'alamat')
+            ->update([
+              'keterangan' => $request -> alamat,
+            ]);
+      Biodata::where('name', 'nomorTelepon')
+            ->update([
+              'keterangan' => $request -> nomorTelepon,
+            ]);
+      Biodata::where('name', 'instagram')
+            ->update([
+              'keterangan' => $request -> instagram,
+            ]);
+      Biodata::where('name', 'facebook')
+            ->update([
+              'keterangan' => $request -> facebook,
+            ]);
+
+      return redirect()->route('admin.biodata.index');
     }
 
     /**
@@ -46,7 +117,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-      return $request;
+      //
     }
 
     /**

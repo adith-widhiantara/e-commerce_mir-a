@@ -13,8 +13,9 @@
     <div class="shoping__checkout">
       <h5>Cart Total</h5>
       <ul>
-        <li>Subtotal <span>$454.98</span></li>
-        <li>Total <span>$454.98</span></li>
+        <!-- <li>Subtotal<span></span></li> -->
+        <!-- <li>Total <span></span></li> -->
+        <li>Total (Belum termasuk ongkir)<span>Rp {{ $totalPrice }}</span></li>
       </ul>
       <a href="{{ route('checkout.index') }}" class="primary-btn">Lanjut Pembayaran</a>
     </div>

@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CheckoutController extends Controller
+use App\Product;
+use App\Categories;
+
+class ShopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +17,10 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-      return view('page.checkout.index');
-    }
+      $product = Product::orderBy('id', 'desc')->paginate(12);
+      $newProduct = Product::orderBy('id', 'desc')->take(6)->get();
 
-    public function dropboxPayment()
-    {
-      return view('page.checkout.payment.index');
+      return view('page.shop.listShop.index', compact('product', 'newProduct'));
     }
 
     /**
@@ -48,9 +50,10 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+      $product = Product::where('slug', $slug)->firstOrFail();
+      return view('page.shop.detailShop.index', compact('product'));
     }
 
     /**

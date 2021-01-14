@@ -1,10 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class CartController extends Controller
+use App\User;
+use App\Biodata;
+use App\Categories;
+use App\product;
+use App\Cart;
+
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +22,18 @@ class CartController extends Controller
      */
     public function index()
     {
-      return view('page.cart.index');
+      $cart = Cart::where('user_id', Auth::id())->get();
+      $totalPrice = DB::table('carts')
+                      ->where('user_id', '=', Auth::id())
+                      ->sum('totalPrice');
+      $user = Auth::user();
+      
+      return view('page.checkout.index', compact('cart', 'totalPrice', 'user'));
+    }
+
+    public function dropboxPayment()
+    {
+      return view('page.checkout.payment.index');
     }
 
     /**

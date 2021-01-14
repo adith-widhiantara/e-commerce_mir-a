@@ -11,7 +11,7 @@
                 <?php if ($count == 3) {
                   break;
                 } ?>
-                <a href="#" class="latest-product__item">
+                <a href="{{ route('shop.show', $new -> slug) }}" class="latest-product__item">
                   <div class="latest-product__item__pic">
                     <img src="{{ asset('img/featured/featured1.png') }}" alt="">
                   </div>
@@ -26,7 +26,7 @@
             <div class="latest-prdouct__slider__item">
               @foreach( $newProduct as $key => $new )
                 @if( $key > 2 )
-                <a href="#" class="latest-product__item">
+                <a href="{{ route('shop.show', $new -> slug) }}" class="latest-product__item">
                   <div class="latest-product__item__pic">
                     <img src="{{ asset('img/featured/featured4.png') }}" alt="">
                   </div>
@@ -52,7 +52,7 @@
               <?php if ($count == 3) {
                 break;
               } ?>
-              <a href="#" class="latest-product__item">
+              <a href="{{ route('shop.show', $sold -> slug) }}" class="latest-product__item">
                 <div class="latest-product__item__pic">
                   <img src="{{ asset('img/featured/featured7.png') }}" alt="">
                 </div>
@@ -67,7 +67,7 @@
             <div class="latest-prdouct__slider__item">
               @foreach( $soldProduct as $key => $sold )
                 @if( $key > 2 )
-                <a href="#" class="latest-product__item">
+                <a href="{{ route('shop.show', $sold -> slug) }}" class="latest-product__item">
                   <div class="latest-product__item__pic">
                     <img src="{{ asset('img/featured/featured10.png') }}" alt="">
                   </div>
@@ -93,7 +93,7 @@
                 <?php if ($count == 3) {
                   break;
                 } ?>
-                <a href="#" class="latest-product__item">
+                <a href="{{ route('shop.show', $price -> slug) }}" class="latest-product__item">
                   <div class="latest-product__item__pic">
                     <img src="{{ asset('img/featured/featured12.png') }}" alt="">
                   </div>
@@ -108,7 +108,7 @@
             <div class="latest-prdouct__slider__item">
               @foreach( $priceProduct as $key => $price )
                 @if( $key > 2 )
-                  <a href="#" class="latest-product__item">
+                  <a href="{{ route('shop.show', $price -> slug) }}" class="latest-product__item">
                     <div class="latest-product__item__pic">
                       <img src="{{ asset('img/featured/featured15.png') }}" alt="">
                     </div>

@@ -1,13 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-use App\Product;
+use App\User;
+use App\Biodata;
 use App\Categories;
+use App\product;
+use App\Cart;
 
-class ShopController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +22,12 @@ class ShopController extends Controller
      */
     public function index()
     {
-      $product = Product::orderBy('id', 'desc')->paginate(12);
-      $newProduct = Product::orderBy('id', 'desc')->take(6)->get();
+      $cart = Cart::where('user_id', Auth::id())->get();
+      $totalPrice = DB::table('carts')
+                      ->where('user_id', '=', Auth::id())
+                      ->sum('totalPrice');
 
-      return view('page.shop.listShop.index', compact('product', 'newProduct'));
+      return view('page.cart.index', compact('cart', 'totalPrice'));
     }
 
     /**
@@ -49,10 +57,9 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-      $product = Product::where('slug', $slug)->firstOrFail();
-      return view('page.shop.detailShop.index', compact('product'));
+        //
     }
 
     /**

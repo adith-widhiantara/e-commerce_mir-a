@@ -21,7 +21,7 @@
           <input type="password" class="form-control" id="passwordInput" name="password">
         </div>
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="rememberInput">
+          <input type="checkbox" class="form-check-input" id="rememberInput" name="remember">
           <label class="form-check-label" for="rememberInput">Ingat saya</label>
         </div>
         <button type="submit" class="btn float-right">Masuk</button>

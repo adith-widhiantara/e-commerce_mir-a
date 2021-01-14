@@ -24,13 +24,13 @@
           </div>
           <div class="hero__search__phone">
             <div class="hero__search__phone__icon">
-              <a target="_blank" href="http://wa.me/6285707095995">
+              <a target="_blank" href="http://wa.me/{{ \App\Biodata::where('name', 'nomorTelepon')->first()->keterangan }}">
                 <i class="fa fa-phone"></i>
               </a>
             </div>
             <div class="hero__search__phone__text">
-              <a target="_blank" href="http://wa.me/6285707095995">
-                <h5>+628570709595</h5>
+              <a target="_blank" href="http://wa.me/{{ \App\Biodata::where('name', 'nomorTelepon')->first()->keterangan }}">
+                <h5>+{{ \App\Biodata::where('name', 'nomorTelepon')->first()->keterangan }}</h5>
                 <span>Hubungi via whatsapp</span>
               </a>
             </div>

@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="#" class="brand-link">
+  <a href="{{ route('landing.index') }}" class="brand-link">
     <img src="{{ asset('img/logoFont.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">Mir'a Collection</span>
   </a>
@@ -10,10 +10,10 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="{{ asset('img/user/programmer.png') }}" class="img-circle elevation-2" alt="User Image">
+        <img src="{{ asset('img/upload/fotoProfil/'.Auth::user()->photo) }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Aditya Saktyawan Widhiantara</a>
+        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
       </div>
     </div>
 
@@ -46,7 +46,11 @@
         </li>
 
         <li class="nav-item">
-          <a href="{{ route('index.biodata.admin') }}" class="nav-link">
+          @if (url()->current() == route('admin.biodata.index'))
+          <a href="#" class="nav-link active">
+          @else
+          <a href="{{ route('admin.biodata.index') }}" class="nav-link">
+          @endif
             <i class="nav-icon fas fa-sliders-h"></i>
             <p>
               Biodata Website

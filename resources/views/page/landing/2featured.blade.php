@@ -35,7 +35,7 @@
             </div>
               <div class="featured__item__text">
                 <h6>
-                  <a href="#">{{ $pro->name }}</a>
+                  <a href="{{ route('shop.show', $pro -> slug) }}">{{ $pro->name }}</a>
                 </h6>
                 <h5>Rp. {{ $pro->price }}</h5>
               </div>
