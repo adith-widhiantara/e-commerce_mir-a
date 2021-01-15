@@ -11,6 +11,10 @@
     <!-- <div class="checkout__order__total">Total <span>$750.99</span></div> -->
     <div class="checkout__order__total">Total <span>Rp {{ $totalPrice }}</span></div>
     <!-- <button type="submit" class="site-btn">Lanjut pembayaran</button> -->
-    <a href="{{ route('checkout.dropboxPayment') }}" class="site-btn">Lanjut pembayaran</a>
+    @if ( $user->ongkir == null )
+    <a href="{{ route('user.status') }}" class="site-btn">Simpan</a>
+    @else
+    <a href="{{ route('checkout.dropboxPayment') }}" class="site-btn">Lanjut Pembayaran</a>
+    @endif
   </div>
 </div>

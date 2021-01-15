@@ -1,8 +1,8 @@
 @extends('base.admin')
 
 <?php
-$title = "Daftar Produk"
-?>
+$title = "Belum Dikonfirmasi";
+ ?>
 
 @section('title', $title)
 
@@ -30,15 +30,9 @@ $title = "Daftar Produk"
 @endsection
 
 @section('base')
-<!-- all table -->
-  @include('page.admin.product.landing.1table')
-<!-- End all table -->
-
-<!-- low stock table -->
-  @if( \App\product::where('stock', '<', 1)->get()->count() != 0 )
-    @include('page.admin.product.landing.2lowTable')
-  @endif
-<!-- end low stock table -->
+  <!-- table -->
+    @include('page.admin.statusPemesanan.belumDikonfirmasi.1table')
+  <!-- end table -->
 @endsection
 
 @section('script')
@@ -65,10 +59,6 @@ $title = "Daftar Produk"
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $("#example2").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
   });
 </script>
 @endsection

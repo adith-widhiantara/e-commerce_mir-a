@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use Faker\Factory as Faker;
+use Illuminate\Support\Str;
 
 class CategoriesSeeder extends Seeder
 {
@@ -15,10 +16,15 @@ class CategoriesSeeder extends Seeder
     {
       $faker = Faker::create();
 
-      for ($i=0; $i < 5; $i++) {
-        \App\Categories::create([
-          'name' => $faker -> word
-        ]);
+      for ($i=1; $i < 6; $i++) {
+        $title = $faker -> sentence($nbWords = 2, $variableNbWords = true);
+        $slug = Str::slug($title, '_');
+
+        \App\Categories::where('id', $i)
+                      ->update([
+                        'name' => $title,
+                        'slug' => $slug,
+                      ]);
       }
     }
 }

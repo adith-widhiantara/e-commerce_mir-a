@@ -99,6 +99,35 @@ class AdminController extends Controller
       return redirect()->route('admin.biodata.index');
     }
 
+    public function userList()
+    {
+      $countAllUser = User::count();
+      $skip = 1;
+      $limit = $countAllUser - $skip;
+      $userList = User::skip($skip)->take($limit)->get();
+      return view('page.admin.userList.landing.index', compact('userList'));
+    }
+
+    public function showUser($id)
+    {
+      $user = User::where('id', $id)->firstOrFail();
+      return view('page.admin.userList.show.index', compact('user'));
+    }
+
+    public function sendShowUser(Request $request, $id)
+    {
+      $request->validate([
+        'ongkir' => 'required|numeric',
+      ]);
+
+      User::where('id', $id)
+          ->update([
+            'ongkir' => $request -> ongkir,
+          ]);
+
+      return redirect()->route('admin.showUser', $id)->with('success', 'Data Tersimpan!');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

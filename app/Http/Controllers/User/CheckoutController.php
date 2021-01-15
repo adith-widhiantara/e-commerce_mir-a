@@ -27,13 +27,19 @@ class CheckoutController extends Controller
                       ->where('user_id', '=', Auth::id())
                       ->sum('totalPrice');
       $user = Auth::user();
-      
+
       return view('page.checkout.index', compact('cart', 'totalPrice', 'user'));
     }
 
     public function dropboxPayment()
     {
-      return view('page.checkout.payment.index');
+      $cart = Cart::where('user_id', Auth::id())->get();
+      $totalPrice = DB::table('carts')
+                      ->where('user_id', '=', Auth::id())
+                      ->sum('totalPrice');
+      $user = Auth::user();
+
+      return view('page.checkout.payment.index', compact('cart', 'totalPrice', 'user'));
     }
 
     /**

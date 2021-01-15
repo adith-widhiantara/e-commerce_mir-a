@@ -32,7 +32,13 @@
                 Rp {{ $crt->totalPrice }}
               </td>
               <td class="shoping__cart__item__close">
-                <span class="icon_close"></span>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('delete-item-{{ $crt->id }}').submit();">
+                  <span class="icon_close"></span>
+                </a>
+                <form id="delete-item-{{ $crt->id }}" action="{{ route('cart.destroy', $crt->id) }}" method="POST" class="d-none">
+                  @csrf
+                  @method('delete')
+                </form>
               </td>
             </tr>
           @endforeach

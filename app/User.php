@@ -16,7 +16,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'nomorTelepon',
+        'photo',
+        'alamat',
+        'kota',
+        'kodePos',
+        'nomorTelepon',
+        'ongkir',
     ];
 
     public function cart()

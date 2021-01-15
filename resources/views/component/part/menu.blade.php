@@ -12,9 +12,11 @@
     <li>
       <a href="#">Profil</a>
       <ul class="header__menu__dropdown">
-        <li><a href="{{ route('user.show', 1) }}">Lihat Profil</a></li>
+        <li><a href="{{ route('user.index') }}">Lihat Profil</a></li>
         <li><a href="{{ route('user.status') }}">Pesanan Saya</a></li>
+        @if (Auth::user() -> role > 1)
         <li><a href="{{ route('admin.index') }}">Halaman Admin</a></li>
+        @endif
       </ul>
     </li>
   @endauth

@@ -19,31 +19,35 @@ Route::get('/', 'LandingController@index')->name('landing.index');
 
 Auth::routes();
 
-// User
-Route::namespace('User')->group(function () {
-  // ShopController
-  Route::resource('shop', 'ShopController');
-  // End ShopController
 
-  // CartController
-  Route::resource('cart', 'CartController')->middleware('auth');
-  // End CartController
+Route::middleware(['auth'])->group(function () {
+  // User
+  Route::namespace('User')->group(function () {
+    // ShopController
+    Route::resource('shop', 'ShopController')->withoutMiddleware('auth');;
+    // End ShopController
 
-  // CheckoutController
-  Route::prefix('checkout')->group(function () {
-    Route::get('payment', 'CheckoutController@dropboxPayment')->name('checkout.dropboxPayment');
+    // CartController
+    Route::resource('cart', 'CartController');
+    // End CartController
+
+    // CheckoutController
+    Route::prefix('checkout')->group(function () {
+      Route::get('payment', 'CheckoutController@dropboxPayment')->name('checkout.dropboxPayment');
+    });
+    Route::resource('checkout', 'CheckoutController');
+    // End CheckoutController
+
+    // UserController
+    Route::prefix('user')->group(function () {
+      Route::get('status', 'UserController@status')->name('user.status');
+    });
+    Route::resource('user', 'UserController');
+    // End UserController
   });
-  Route::resource('checkout', 'CheckoutController');
-  // End CheckoutController
+  // End User
 });
-// End User
 
-// UserController
-Route::prefix('user')->group(function () {
-  Route::get('status', 'UserController@status')->name('user.status');
-});
-Route::resource('user', 'UserController');
-// End UserController
 
 Route::middleware(['auth', 'CheckRole'])->group(function () {
   // Admin
@@ -64,6 +68,20 @@ Route::middleware(['auth', 'CheckRole'])->group(function () {
         Route::post('biodataAdmin', 'AdminController@biodataAdmin')->name('admin.biodata.biodataAdmin');
       });
       // End AdminController (Biodata)
+
+      // StatusController
+      Route::prefix('status')->group(function() {
+        Route::get('belumdikonfirmasi', 'StatusController@belumDikonfirmasi')->name('status.belumDikonfirmasi');
+      });
+      // End StatusController
+
+      // AdminController (userList)
+      Route::prefix('userlist')->group(function() {
+        Route::get('', 'AdminController@userList')->name('admin.userList');
+        Route::get('{id}', 'AdminController@showUser')->name('admin.showUser');
+        Route::patch('{id}/send', 'AdminController@sendShowUser')->name('admin.send.showUser');
+      });
+      // End AdminController (userList)
     });
 
     // AdminController

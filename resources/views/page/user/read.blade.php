@@ -1,10 +1,10 @@
 @extends('base.base')
 
-@section('title', 'Read Akun')
+@section('title', $user->name)
 
 @section('base')
 <!-- Breadcrumbs -->
-  {{ Breadcrumbs::render('user.show', 1) }}
+  {{ Breadcrumbs::render('user.index', $user) }}
 <!-- end Breadcrumbs -->
 
 @endsection

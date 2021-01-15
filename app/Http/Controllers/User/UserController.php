@@ -1,8 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+use App\User;
+use App\Biodata;
+use App\Categories;
+use App\product;
+use App\Cart;
 
 class UserController extends Controller
 {
@@ -13,12 +22,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+      $user = Auth::user();
+      return view('page.user.read', compact('user'));
     }
 
     public function status()
     {
-      return view('page.user.status.index');
+      $user = Auth::user();
+      return view('page.user.status.index', compact('user'));
     }
 
     /**
@@ -50,7 +61,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-      return view('page.user.read');
+        // 
     }
 
     /**

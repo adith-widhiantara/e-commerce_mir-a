@@ -59,7 +59,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        //
+      return "show";
     }
 
     /**
@@ -93,6 +93,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Cart::destroy($id);
+      return redirect()->route('cart.index');
     }
 }

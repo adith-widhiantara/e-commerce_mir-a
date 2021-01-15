@@ -17,8 +17,12 @@
           <input type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" name="name">
         </div>
         <div class="form-group">
-          <label for="usernameInput">Alamat Email / Username</label>
+          <label for="usernameInput">Alamat Email</label>
           <input type="email" class="form-control" id="usernameInput" aria-describedby="emailHelp" name="email">
+        </div>
+        <div class="form-group">
+          <label for="usernameInput">Nomor Telepon</label>
+          <input type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" name="nomorTelepon">
         </div>
         <div class="form-group">
           <label for="passwordInput">Kata Sandi</label>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 use Faker\Factory as Faker;
 
@@ -16,7 +17,7 @@ class CategoriesProductSeeder extends Seeder
       $faker = Faker::create();
 
       for ($i=0; $i < 30; $i++) {
-        \App\CategoriesProduct::create([
+        DB::table('categories_product')->insert([
           'product_id' => $faker -> numberBetween($min = 1, $max = 30),
           'Categories_id' => $faker -> numberBetween($min = 1, $max = 5),
         ]);

@@ -16,10 +16,10 @@ class CreateCartsTable extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('product_id');
-            $table->integer('buyStock');
             $table->integer('status');
             $table->bigInteger('totalPrice');
+            $table->string('buktiTransfer');
+            $table->string('resi');
             $table->timestamps();
         });
     }

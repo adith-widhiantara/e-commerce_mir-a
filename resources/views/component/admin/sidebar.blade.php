@@ -108,8 +108,13 @@
           </a>
         </li>
 
+        @if (url()->current() == route('admin.userList'))
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link active">
+        @else
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('admin.userList') }}" class="nav-link">
+        @endif
             <i class="nav-icon fas fa-users"></i>
             <p>
               Daftar Pengguna
@@ -117,8 +122,13 @@
           </a>
         </li>
 
-        <li class="nav-item">
-          <a href="#" class="nav-link">
+        @if (url()->current() == route('status.belumDikonfirmasi'))
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+        @else
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+        @endif
             <i class="nav-icon fas fa-truck-loading"></i>
             <p>
               Status Pemesanan
@@ -127,11 +137,23 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              @if (url()->current() == route('status.belumDikonfirmasi'))
+              <a href="#" class="nav-link active">
+              @else
+              <a href="{{ route('status.belumDikonfirmasi') }}" class="nav-link">
+              @endif
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Belum Dikonfirmasi
-                  <span class="right badge badge-primary">1</span>
+                  <?php
+                  $cart = DB::table('carts')
+                            ->join('users', 'carts.user_id', '=', 'users.id')
+                            ->select(DB::raw('count(*) as jumlah, name'))
+                            ->where('status', '=', 1)
+                            ->groupBy('name')
+                            ->get();
+                   ?>
+                  <span class="right badge badge-primary">{{ $cart->count() }}</span>
                 </p>
               </a>
             </li>
