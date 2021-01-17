@@ -1,8 +1,30 @@
 @extends('base.admin')
 
-<?php
-$title = "Belum Dikonfirmasi";
- ?>
+@if ( url()->current() == route('status.belumDikonfirmasi') )
+  <?php
+    $title = "Belum Dikonfirmasi";
+  ?>
+@elseif ( url()->current() == route('status.belumDibayar') )
+  <?php
+    $title = "Belum Dibayar";
+  ?>
+@elseif ( url()->current() == route('status.belumDikemas') )
+  <?php
+    $title = "Belum Dikemas";
+  ?>
+@elseif ( url()->current() == route('status.sedangDikirim') )
+  <?php
+    $title = "Sedang Dikirim";
+  ?>
+@elseif ( url()->current() == route('status.selesai') )
+  <?php
+    $title = "Selesai";
+  ?>
+@elseif ( url()->current() == route('status.dibatalkan') )
+  <?php
+    $title = "Dibatalkan";
+  ?>
+@endif
 
 @section('title', $title)
 
@@ -30,9 +52,31 @@ $title = "Belum Dikonfirmasi";
 @endsection
 
 @section('base')
-  <!-- table -->
-    @include('page.admin.statusPemesanan.belumDikonfirmasi.1table')
-  <!-- end table -->
+  @if ( url()->current() == route('status.belumDikonfirmasi') )
+    <!-- table -->
+      @include('page.admin.statusPemesanan.belumDikonfirmasi.1table')
+    <!-- end table -->
+  @elseif ( url()->current() == route('status.belumDibayar') )
+    <!-- table -->
+      @include('page.admin.statusPemesanan.belumDibayar.1table')
+    <!-- end table -->
+  @elseif ( url()->current() == route('status.belumDikemas') )
+    <!-- table -->
+      @include('page.admin.statusPemesanan.belumDikemas.1table')
+    <!-- end table -->
+  @elseif ( url()->current() == route('status.sedangDikirim') )
+    <!-- table -->
+      @include('page.admin.statusPemesanan.sedangDikirim.1table')
+    <!-- end table -->
+  @elseif ( url()->current() == route('status.selesai') )
+    <!-- table -->
+      @include('page.admin.statusPemesanan.selesai.1table')
+    <!-- end table -->
+  @elseif ( url()->current() == route('status.dibatalkan') )
+    <!-- table -->
+      @include('page.admin.statusPemesanan.dibatalkan.1table')
+    <!-- end table -->
+  @endif
 @endsection
 
 @section('script')

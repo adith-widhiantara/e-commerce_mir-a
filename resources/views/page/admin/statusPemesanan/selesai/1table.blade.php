@@ -8,7 +8,7 @@
         <tr>
           <th>Nomor</th>
           <th>Nama</th>
-          <th>Jumlah barang</th>
+          <th>Jumlah Barang</th>
         </tr>
       </thead>
       <tbody>
@@ -18,12 +18,12 @@
               {{ $loop -> iteration }}
             </td>
             <td>
-              <a href="{{ route('admin.showUser', $crt -> id) }}">
-                {{ $crt -> name }}
+              <a href="{{ route('status.selesai.user', $crt -> id) }}">
+                {{ $crt -> user -> name }}
               </a>
             </td>
             <td>
-              {{ $crt -> jumlah }}
+              {{ $crt -> product -> count() }}
             </td>
           </tr>
         @endforeach
@@ -32,7 +32,7 @@
         <tr>
           <th>Nomor</th>
           <th>Nama</th>
-          <th>Jumlah barang</th>
+          <th>Jumlah Barang</th>
         </tr>
       </tfoot>
     </table>

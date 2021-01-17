@@ -8,10 +8,11 @@ class Cart extends Model
 {
   protected $fillable=[
     'user_id',
-    'product_id',
-    'buyStock',
     'status',
     'totalPrice',
+    'buktiTransfer',
+    'resi',
+    'pengiriman',
   ];
 
   public function user()
@@ -21,6 +22,6 @@ class Cart extends Model
 
   public function product()
   {
-    return $this->belongsTo('App\product');
+    return $this->belongsToMany('App\product')->withPivot('quantity','subTotalPrice');
   }
 }

@@ -11,22 +11,22 @@
           <div class="card-body">
             <div class="form-group">
               <label for="exampleInputEmail1">Instagram</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Instagram" value="{{ \App\Biodata::where('name','instagram')->first()->keterangan }}" name="instagram">
+              <input type="text" class="form-control"  placeholder="Instagram" value="{{ \App\Biodata::where('name','instagram')->first()->keterangan }}" name="instagram">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Facebook</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Facebook" value="{{ \App\Biodata::where('name','facebook')->first()->keterangan }}" name="facebook">
+              <input type="text" class="form-control"  placeholder="Facebook" value="{{ \App\Biodata::where('name','facebook')->first()->keterangan }}" name="facebook">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Alamat</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Alamat" value="{{ $user->alamat }}" name="alamat">
+              <input type="text" class="form-control"  placeholder="Alamat" value="{{ $user->alamat }}" name="alamat">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Nomor Telepon</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nomor Telepon" value="{{ $user->nomorTelepon }}" name="nomorTelepon">
+              <input type="text" class="form-control"  placeholder="Nomor Telepon" value="{{ $user->nomorTelepon }}" name="nomorTelepon">
             </div>
           </div>
           <div class="card-footer">

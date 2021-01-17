@@ -66,12 +66,23 @@ Route::middleware(['auth', 'CheckRole'])->group(function () {
         Route::get('', 'AdminController@biodata')->name('admin.biodata.index');
         Route::patch('biodataWebsite', 'AdminController@biodataWebsite')->name('admin.biodata.biodataWebsite');
         Route::post('biodataAdmin', 'AdminController@biodataAdmin')->name('admin.biodata.biodataAdmin');
+        Route::post('addbank', 'AdminController@addBank')->name('admin.biodata.send.addBank');
       });
       // End AdminController (Biodata)
 
       // StatusController
       Route::prefix('status')->group(function() {
         Route::get('belumdikonfirmasi', 'StatusController@belumDikonfirmasi')->name('status.belumDikonfirmasi');
+        Route::get('belumdibayar', 'StatusController@belumDibayar')->name('status.belumDibayar');
+        Route::get('belumdibayar/{id}', 'StatusController@belumDibayarUser')->name('status.belumDibayar.user');
+        Route::get('belumdikemas', 'StatusController@belumDikemas')->name('status.belumDikemas');
+        Route::get('belumdikemas/{id}', 'StatusController@belumDikemasUser')->name('status.belumDikemas.user');
+        Route::get('sedangdikirim', 'StatusController@sedangDikirim')->name('status.sedangDikirim');
+        Route::get('sedangdikirim/{id}', 'StatusController@sedangDikirimUser')->name('status.sedangDikirim.user');
+        Route::get('selesai', 'StatusController@selesai')->name('status.selesai');
+        Route::get('selesai/{id}', 'StatusController@selesaiUser')->name('status.selesai.user');
+        Route::get('dibatalkan', 'StatusController@dibatalkan')->name('status.dibatalkan');
+        Route::get('dibatalkan/{id}', 'StatusController@dibatalkanUser')->name('status.dibatalkan.user');
       });
       // End StatusController
 

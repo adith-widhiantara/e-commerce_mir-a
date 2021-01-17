@@ -12,6 +12,7 @@ use App\Biodata;
 use App\Categories;
 use App\product;
 use App\Cart;
+use App\Bank;
 
 class CheckoutController extends Controller
 {
@@ -22,24 +23,32 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-      $cart = Cart::where('user_id', Auth::id())->get();
-      $totalPrice = DB::table('carts')
-                      ->where('user_id', '=', Auth::id())
-                      ->sum('totalPrice');
+      $cart = Cart::where('user_id', Auth::id())
+                  ->where('status', '=', 0)
+                  ->get();
       $user = Auth::user();
+      $totalPricePivot = DB::table('cart_product')
+                          ->where('cart_id', '=', 7)
+                          ->sum('subTotalPrice');
 
-      return view('page.checkout.index', compact('cart', 'totalPrice', 'user'));
+
+      return view('page.checkout.index', compact('cart', 'totalPricePivot', 'user'));
     }
 
     public function dropboxPayment()
     {
-      $cart = Cart::where('user_id', Auth::id())->get();
-      $totalPrice = DB::table('carts')
-                      ->where('user_id', '=', Auth::id())
-                      ->sum('totalPrice');
+      $cart = Cart::where('user_id', Auth::id())
+                  ->where('status', '=', 0)
+                  ->get();
       $user = Auth::user();
+      $totalPricePivot = DB::table('cart_product')
+                          ->where('cart_id', '=', 7)
+                          ->sum('subTotalPrice');
+      $bank = Bank::all();
 
-      return view('page.checkout.payment.index', compact('cart', 'totalPrice', 'user'));
+      $totalProductOngkir = $user -> ongkir + $totalPricePivot;
+
+      return view('page.checkout.payment.index', compact('cart', 'totalPricePivot', 'user', 'totalProductOngkir', 'bank'));
     }
 
     /**

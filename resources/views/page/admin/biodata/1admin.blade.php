@@ -10,17 +10,17 @@
           <div class="card-body">
             <div class="form-group">
               <label for="exampleInputEmail1">Nama</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama" value="{{ $user->name }}" name="name">
+              <input type="text" class="form-control"  placeholder="Nama" value="{{ $user->name }}" name="name">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Email</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="{{ $user->email }}" name="email">
+              <input type="email" class="form-control"  placeholder="Email" value="{{ $user->email }}" name="email">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Ganti Password</label>
-              <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Ganti Password" name="password">
+              <input type="password" class="form-control"  placeholder="Ganti Password" name="password">
             </div>
 
             <div class="form-group">

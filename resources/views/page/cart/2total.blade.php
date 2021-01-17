@@ -15,7 +15,7 @@
       <ul>
         <!-- <li>Subtotal<span></span></li> -->
         <!-- <li>Total <span></span></li> -->
-        <li>Total (Belum termasuk ongkir)<span>Rp {{ $totalPrice }}</span></li>
+        <li>Total (Belum termasuk ongkir)<span>Rp {{ $totalPricePivot }}</span></li>
       </ul>
       <a href="{{ route('checkout.index') }}" class="primary-btn">Lanjut Pembayaran</a>
     </div>

@@ -18,12 +18,12 @@
               {{ $loop -> iteration }}
             </td>
             <td>
-              <a href="{{ route('admin.showUser', $crt -> id) }}">
-                {{ $crt -> name }}
+              <a href="{{ route('status.dibatalkan.user', $crt -> id) }}">
+                {{ $crt -> user -> name }}
               </a>
             </td>
             <td>
-              {{ $crt -> jumlah }}
+              {{ $crt -> product ->count() }}
             </td>
           </tr>
         @endforeach

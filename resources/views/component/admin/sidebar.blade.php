@@ -122,7 +122,7 @@
           </a>
         </li>
 
-        @if (url()->current() == route('status.belumDikonfirmasi'))
+        @if (url()->current() == route('status.belumDikonfirmasi') || url()->current() == route('status.belumDibayar') || url()->current() == route('status.belumDikemas') || url()->current() == route('status.sedangDikirim') || url()->current() == route('status.selesai') || url()->current() == route('status.dibatalkan'))
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
         @else
@@ -146,62 +146,114 @@
                 <p>
                   Belum Dikonfirmasi
                   <?php
-                  $cart = DB::table('carts')
+                  $belumDikonfirmasi = DB::table('carts')
                             ->join('users', 'carts.user_id', '=', 'users.id')
                             ->select(DB::raw('count(*) as jumlah, name'))
                             ->where('status', '=', 1)
+                            ->where('ongkir', '=', null)
                             ->groupBy('name')
                             ->get();
                    ?>
-                  <span class="right badge badge-primary">{{ $cart->count() }}</span>
+                  <span class="right badge badge-primary">{{ $belumDikonfirmasi->count() }}</span>
                 </p>
               </a>
             </li>
+
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              @if (url()->current() == route('status.belumDibayar'))
+              <a href="#" class="nav-link active">
+              @else
+              <a href="{{ route('status.belumDibayar') }}" class="nav-link">
+              @endif
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Belum Dibayar
-                  <span class="right badge badge-primary">1</span>
+                  <?php
+                  $belumDibayar = DB::table('carts')
+                                    ->where('status', '=', 2)
+                                    ->get();
+                   ?>
+                  <span class="right badge badge-primary">{{ $belumDibayar -> count() }}</span>
                 </p>
               </a>
             </li>
+
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              @if (url()->current() == route('status.belumDikemas'))
+              <a href="#" class="nav-link active">
+              @else
+              <a href="{{ route('status.belumDikemas') }}" class="nav-link">
+              @endif
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Belum Dikemas
-                  <span class="right badge badge-primary">1</span>
+                  <?php
+                  $belumDikemas = DB::table('carts')
+                                    ->where('status', '=', 3)
+                                    ->get();
+                  ?>
+                  <span class="right badge badge-primary">{{ $belumDikemas -> count() }}</span>
                 </p>
               </a>
             </li>
+
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              @if (url()->current() == route('status.sedangDikirim'))
+              <a href="#" class="nav-link active">
+              @else
+              <a href="{{ route('status.sedangDikirim') }}" class="nav-link">
+              @endif
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Sedang Dikirim
-                  <span class="right badge badge-primary">1</span>
+                  <?php
+                  $sedangDikirim = DB::table('carts')
+                                      ->where('status', '=', 4)
+                                      ->get();
+                  ?>
+                  <span class="right badge badge-primary">{{ $sedangDikirim -> count() }}</span>
                 </p>
               </a>
             </li>
+
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              @if (url()->current() == route('status.selesai'))
+              <a href="#" class="nav-link active">
+              @else
+              <a href="{{ route('status.selesai') }}" class="nav-link">
+              @endif
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Selesai
-                  <span class="right badge badge-primary">1</span>
+                  <?php
+                  $selesai = DB::table('carts')
+                                      ->where('status', '=', 5)
+                                      ->get();
+                  ?>
+                  <span class="right badge badge-primary">{{ $selesai -> count() }}</span>
                 </p>
               </a>
             </li>
+
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              @if (url()->current() == route('status.dibatalkan'))
+              <a href="#" class="nav-link active">
+              @else
+              <a href="{{ route('status.dibatalkan') }}" class="nav-link">
+              @endif
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Dibatalkan
-                  <span class="right badge badge-primary">1</span>
+                  <?php
+                  $dibatalkan = DB::table('carts')
+                                      ->where('status', '=', 6)
+                                      ->get();
+                  ?>
+                  <span class="right badge badge-primary">{{ $dibatalkan -> count() }}</span>
                 </p>
               </a>
             </li>
+
           </ul>
         </li>
 

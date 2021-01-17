@@ -24,6 +24,6 @@ class product extends Model
 
   public function cart()
   {
-    return $this->hasOne('App\Cart');
+    return $this->belongsToMany('App\Cart');
   }
 }

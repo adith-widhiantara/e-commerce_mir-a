@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">{{ $title }}</h3>
+    <h3 class="card-title">Daftar Keranjang</h3>
   </div>
   <div class="card-body">
     <table id="example1" class="table table-bordered table-striped">
@@ -8,22 +8,22 @@
         <tr>
           <th>Nomor</th>
           <th>Nama</th>
-          <th>Jumlah barang</th>
+          <th>Jumlah Barang</th>
         </tr>
       </thead>
       <tbody>
-        @foreach( $cart as $crt )
+        @foreach( $cart -> product as $pro )
           <tr>
             <td>
               {{ $loop -> iteration }}
             </td>
             <td>
-              <a href="{{ route('admin.showUser', $crt -> id) }}">
-                {{ $crt -> name }}
+              <a href="#">
+                {{ $pro -> name }}
               </a>
             </td>
             <td>
-              {{ $crt -> jumlah }}
+              {{ $pro -> pivot -> quantity }}
             </td>
           </tr>
         @endforeach
@@ -32,7 +32,7 @@
         <tr>
           <th>Nomor</th>
           <th>Nama</th>
-          <th>Jumlah barang</th>
+          <th>Jumlah Barang</th>
         </tr>
       </tfoot>
     </table>

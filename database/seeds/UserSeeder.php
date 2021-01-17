@@ -20,7 +20,12 @@ class UserSeeder extends Seeder
         \App\User::create([
           'name' => $faker -> name,
           'email' => $faker -> freeEmail,
-          'password' => Hash::make('12345678'),
+          'password' => Hash::make('123123123'),
+          'alamat' => $faker -> address,
+          'kota' => $faker -> cityPrefix,
+          'kodePos' => $faker -> postcode,
+          'nomorTelepon' => $faker -> e164PhoneNumber,
+          'ongkir' => $faker -> numberBetween($min = 9, $max = 15)*1000,
         ]);
       }
     }

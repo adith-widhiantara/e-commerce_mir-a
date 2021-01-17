@@ -8,7 +8,8 @@
         <tr>
           <th>Nomor</th>
           <th>Nama</th>
-          <th>Jumlah barang</th>
+          <th>Nomor Resi</th>
+          <th>Jasa Pengiriman</th>
         </tr>
       </thead>
       <tbody>
@@ -18,12 +19,15 @@
               {{ $loop -> iteration }}
             </td>
             <td>
-              <a href="{{ route('admin.showUser', $crt -> id) }}">
-                {{ $crt -> name }}
+              <a href="{{ route('status.sedangDikirim.user', $crt -> id) }}">
+                {{ $crt -> user -> name }}
               </a>
             </td>
             <td>
-              {{ $crt -> jumlah }}
+              {{ $crt -> resi }}
+            </td>
+            <td>
+              {{ $crt -> pengiriman }}
             </td>
           </tr>
         @endforeach
@@ -32,7 +36,8 @@
         <tr>
           <th>Nomor</th>
           <th>Nama</th>
-          <th>Jumlah barang</th>
+          <th>Nomor Resi</th>
+          <th>Jasa Pengiriman</th>
         </tr>
       </tfoot>
     </table>

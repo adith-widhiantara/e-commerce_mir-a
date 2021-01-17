@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('photo');
             $table->integer('role');
             $table->string('alamat');
+            $table->string('kota');
+            $table->string('kodePos');
             $table->string('nomorTelepon');
             $table->integer('ongkir');
             $table->timestamp('email_verified_at')->nullable();

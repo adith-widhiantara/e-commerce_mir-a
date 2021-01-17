@@ -18,7 +18,7 @@
               {{ $loop -> iteration }}
             </td>
             <td>
-              <a href="{{ route('admin.showUser', $crt -> id) }}">
+              <a href="{{ route('status.belumDikemas.user', $crt -> id) }}">
                 {{ $crt -> name }}
               </a>
             </td>

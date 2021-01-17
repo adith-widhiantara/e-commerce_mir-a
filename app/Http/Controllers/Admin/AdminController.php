@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Redirect;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ use App\User;
 use App\Biodata;
 use App\Categories;
 use App\product;
+use App\Bank;
 
 class AdminController extends Controller
 {
@@ -30,7 +32,8 @@ class AdminController extends Controller
     public function biodata()
     {
       $user = Auth::user();
-      return view('page.admin.biodata.index', compact('user'));
+      $bank = Bank::all();
+      return view('page.admin.biodata.index', compact('user', 'bank'));
     }
 
     public function biodataAdmin(Request $request)
@@ -60,7 +63,7 @@ class AdminController extends Controller
             'email' => $request -> email,
           ]);
 
-      return redirect()->route('admin.biodata.index');
+      return redirect()->route('admin.biodata.index')->with('success', 'Profile updated!');
     }
 
     public function biodataWebsite(Request $request)
@@ -96,7 +99,7 @@ class AdminController extends Controller
               'keterangan' => $request -> facebook,
             ]);
 
-      return redirect()->route('admin.biodata.index');
+      return redirect()->route('admin.biodata.index')->with('success', 'Profile updated!');;
     }
 
     public function userList()
@@ -126,6 +129,30 @@ class AdminController extends Controller
           ]);
 
       return redirect()->route('admin.showUser', $id)->with('success', 'Data Tersimpan!');
+    }
+
+    public function addBank(Request $request)
+    {
+      $request->validate([
+        'photoBank' => 'required|image',
+        'nameBank' => 'required',
+        'norekBank' => 'required|numeric',
+        'nameOwnBank' => 'required',
+      ]);
+
+      $photo = $request->file('photoBank');
+      $namaPhoto = $photo->getClientOriginalName();
+      $tujuan_upload = 'img/upload/bank';
+      $photo->move($tujuan_upload, $namaPhoto);
+
+      Bank::create([
+        'photo' => $namaPhoto,
+        'bank' => $request -> nameBank,
+        'norek' => $request -> norekBank,
+        'nama' => $request -> nameOwnBank,
+      ]);
+
+      return redirect()->route('admin.biodata.index');
     }
 
     /**

@@ -22,12 +22,18 @@ class CartController extends Controller
      */
     public function index()
     {
-      $cart = Cart::where('user_id', Auth::id())->get();
+      $cart = Cart::where('user_id', Auth::id())
+                  ->where('status', '=', 0)
+                  ->get();
       $totalPrice = DB::table('carts')
                       ->where('user_id', '=', Auth::id())
                       ->sum('totalPrice');
 
-      return view('page.cart.index', compact('cart', 'totalPrice'));
+      $totalPricePivot = DB::table('cart_product')
+                          ->where('cart_id', '=', 7)
+                          ->sum('subTotalPrice');
+
+      return view('page.cart.index', compact('cart', 'totalPricePivot'));
     }
 
     /**

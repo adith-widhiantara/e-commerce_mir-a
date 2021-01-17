@@ -13,23 +13,26 @@
         </thead>
         <tbody>
           @foreach( $cart as $crt )
+            @foreach( $crt -> product as $pro )
             <tr>
               <td class="shoping__cart__item">
                 <img src="{{ asset('img/featured/featured1.png') }}" alt="">
-                <h5>{{ $crt->product->name }}</h5>
+                <h5>
+                  {{ $pro -> name }}
+                </h5>
               </td>
               <td class="shoping__cart__price">
-                Rp {{ $crt->product->price }}
+                Rp {{ $pro -> price }}
               </td>
               <td class="shoping__cart__quantity">
                 <div class="quantity">
                   <div class="pro-qty">
-                    <input type="text" value="{{ $crt->buyStock }}">
+                    <input type="text" value="{{ $pro -> pivot -> quantity }}">
                   </div>
                 </div>
               </td>
               <td class="shoping__cart__total">
-                Rp {{ $crt->totalPrice }}
+                Rp {{ $pro -> pivot -> subTotalPrice }}
               </td>
               <td class="shoping__cart__item__close">
                 <a href="#" onclick="event.preventDefault(); document.getElementById('delete-item-{{ $crt->id }}').submit();">
@@ -41,6 +44,7 @@
                 </form>
               </td>
             </tr>
+            @endforeach
           @endforeach
         </tbody>
       </table>

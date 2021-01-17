@@ -15,14 +15,19 @@ class CartSeeder extends Seeder
     {
       $faker = Faker::create();
 
-      for ($i=1; $i < 31; $i++) {
-        \App\Cart::create([
-          'user_id' => $faker -> numberBetween($min = 2, $max = 11),
-          'product_id' => $i,
-          'buyStock' => $faker -> numberBetween($min = 1, $max = 5),
-          'status' => $faker -> numberBetween($min = 1, $max = 6),
-          'totalPrice' => $faker -> numberBetween($min = 1, $max = 9) * 1000,
-        ]);
+      for ($i=1; $i < 30; $i++) {
+        \App\Cart::where('id', $i)
+                ->update([
+                  'pengiriman' => 'JNE',
+                ]);
+
+        // \App\Cart::create([
+        //   'user_id' => $faker -> numberBetween($min = 2, $max = 11),
+        //   'status' => $faker -> numberBetween($min = 1, $max = 6),
+        //   'totalPrice' => $faker -> numberBetween($min = 1, $max = 9) * 1000,
+        //   'buktiTransfer' => "avatar.png",
+        //   'resi' => $faker -> creditCardNumber,
+        // ]);
       }
     }
 }

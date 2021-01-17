@@ -8,19 +8,19 @@
     <div class="card-body">
       <div class="form-group">
         <label for="exampleInputEmail1">Alamat</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{ $user -> alamat }}" disabled>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Alamat" value="{{ $user -> alamat }}" disabled>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Kota</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{ $user -> kota }}" disabled>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Kota" value="{{ $user -> kota }}" disabled>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Kode Pos</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{ $user -> kodePos }}" disabled>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Kode Pos" value="{{ $user -> kodePos }}" disabled>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Harga Ongkos Kirim</label>
-        <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{ $user -> ongkir }}" name="ongkir">
+        <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Harga Ongkos Kirim" value="{{ $user -> ongkir }}" name="ongkir">
       </div>
     </div>
     <div class="card-footer">
