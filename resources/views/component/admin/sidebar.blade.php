@@ -146,13 +146,13 @@
                 <p>
                   Belum Dikonfirmasi
                   <?php
-                  $belumDikonfirmasi = DB::table('carts')
-                            ->join('users', 'carts.user_id', '=', 'users.id')
-                            ->select(DB::raw('count(*) as jumlah, name'))
-                            ->where('status', '=', 1)
-                            ->where('ongkir', '=', null)
-                            ->groupBy('name')
-                            ->get();
+                    $belumDikonfirmasi = DB::table('carts')
+                                          ->join('users', 'carts.user_id', '=', 'users.id')
+                                          ->select(DB::raw('count(*) as jumlah, name'))
+                                          ->where('status', '=', 1)
+                                          ->where('ongkir', '=', null)
+                                          ->groupBy('name')
+                                          ->get();
                    ?>
                   <span class="right badge badge-primary">{{ $belumDikonfirmasi->count() }}</span>
                 </p>
@@ -169,10 +169,10 @@
                 <p>
                   Belum Dibayar
                   <?php
-                  $belumDibayar = DB::table('carts')
-                                    ->where('status', '=', 2)
-                                    ->get();
-                   ?>
+                    $belumDibayar = DB::table('carts')
+                                      ->where('status', '=', 2)
+                                      ->get();
+                  ?>
                   <span class="right badge badge-primary">{{ $belumDibayar -> count() }}</span>
                 </p>
               </a>
@@ -188,9 +188,9 @@
                 <p>
                   Belum Dikemas
                   <?php
-                  $belumDikemas = DB::table('carts')
-                                    ->where('status', '=', 3)
-                                    ->get();
+                    $belumDikemas = DB::table('carts')
+                                      ->where('status', '=', 3)
+                                      ->get();
                   ?>
                   <span class="right badge badge-primary">{{ $belumDikemas -> count() }}</span>
                 </p>
@@ -207,9 +207,9 @@
                 <p>
                   Sedang Dikirim
                   <?php
-                  $sedangDikirim = DB::table('carts')
-                                      ->where('status', '=', 4)
-                                      ->get();
+                    $sedangDikirim = DB::table('carts')
+                                        ->where('status', '=', 4)
+                                        ->get();
                   ?>
                   <span class="right badge badge-primary">{{ $sedangDikirim -> count() }}</span>
                 </p>
@@ -226,9 +226,9 @@
                 <p>
                   Selesai
                   <?php
-                  $selesai = DB::table('carts')
-                                      ->where('status', '=', 5)
-                                      ->get();
+                    $selesai = DB::table('carts')
+                                  ->where('status', '=', 5)
+                                  ->get();
                   ?>
                   <span class="right badge badge-primary">{{ $selesai -> count() }}</span>
                 </p>
@@ -245,9 +245,9 @@
                 <p>
                   Dibatalkan
                   <?php
-                  $dibatalkan = DB::table('carts')
-                                      ->where('status', '=', 6)
-                                      ->get();
+                    $dibatalkan = DB::table('carts')
+                                    ->where('status', '=', 6)
+                                    ->get();
                   ?>
                   <span class="right badge badge-primary">{{ $dibatalkan -> count() }}</span>
                 </p>

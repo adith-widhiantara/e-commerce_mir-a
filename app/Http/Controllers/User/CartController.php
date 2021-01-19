@@ -65,7 +65,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
-      return "show";
+      // 
     }
 
     /**

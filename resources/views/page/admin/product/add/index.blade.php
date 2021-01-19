@@ -6,10 +6,6 @@ $title = "Tambah Produk"
 
 @section('title', $title)
 
-@section('style')
-
-@endsection
-
 @section('header')
 <div class="content-header">
   <div class="container-fluid">
@@ -34,51 +30,45 @@ $title = "Tambah Produk"
       <div class="card-header">
         <h3 class="card-title">{{ $title }}</h3>
       </div>
-      <form>
+      <form class="" action="{{ route('product.store') }}" method="post">
+        @csrf
         <div class="card-body">
           <div class="form-group">
             <label for="ProsesTambahProduk">Proses Tambah Produk</label>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+              <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                30%
+              </div>
             </div>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Nama Barang</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama Barang">
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama Barang" name="name">
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Deskripsi</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Deskripsi">
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Deskripsi" name="desc">
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Stok</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Stok">
+            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Stok" name="stock">
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Harga</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Harga">
+            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Harga" name="price">
           </div>
 
           <div class="form-group">
-            <label for="exampleInputFile">File input</label>
-            <div class="input-group">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="exampleInputFile" onchange="previewImage();">
-                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-              </div>
-              <div class="input-group-append">
-                <span class="input-group-text">Upload</span>
-              </div>
-            </div>
-            <img id="image-preview" alt="image preview" class="img-fluid" style="display:none"/>
+            <label for="exampleInputPassword1">Berat (gram)</label>
+            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Berat" name="weight">
           </div>
 
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" checked>
+            <input type="checkbox" class="form-check-input" value="1" checked name="status">
             <label class="form-check-label" for="exampleCheck1">Tampilkan barang</label>
           </div>
 

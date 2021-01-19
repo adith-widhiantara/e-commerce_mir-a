@@ -11,12 +11,13 @@
           </button>
         </div>
         <div class="col-12">
-          <form class="my-3" action="#" method="">
+          <form class="my-3" action="{{ route('status.belumDikemas.send', $crt -> id) }}" method="post">
+            @csrf
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Nomor Resi">
+              <input type="text" class="form-control" placeholder="Nomor Resi" value="{{ $crt -> resi }}" name="resi">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Jasa Pengiriman">
+              <input type="text" class="form-control" placeholder="Jasa Pengiriman" value="{{ $crt -> pengiriman }}" name="pengiriman">
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-info btn-block">
@@ -24,6 +25,7 @@
               </button>
             </div>
           </form>
+
         </div>
       </div>
 

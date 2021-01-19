@@ -29,7 +29,10 @@ class UserController extends Controller
     public function status()
     {
       $user = Auth::user();
-      return view('page.user.status.index', compact('user'));
+      $cart = Cart::where('user_id', $user->id)
+                  ->get();
+
+      return view('page.user.status.index', compact('user', 'cart'));
     }
 
     /**
@@ -61,7 +64,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        // 
+        //
     }
 
     /**

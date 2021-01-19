@@ -4,16 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categories extends Model
+class ImageProduct extends Model
 {
   protected $fillable=[
+    'product_id',
     'name',
-    'slug',
-    'color',
   ];
 
   public function product()
   {
-    return $this->belongsToMany('App\product');
+    return $this->belongsTo('App\product');
   }
 }

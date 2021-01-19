@@ -12,7 +12,7 @@ class LandingController extends Controller
   public function index()
   {
     $categories = Categories::all();
-    $product = Product::all();
+    $product = Product::where('status', 1)->get();
     $newProduct = Product::orderBy('id', 'desc')->take(6)->get();
     $soldProduct = Product::orderBy('sold', 'desc')->take(6)->get();
     $priceProduct = Product::orderBy('price', 'asc')->take(6)->get();

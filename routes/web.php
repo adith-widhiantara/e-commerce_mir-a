@@ -54,6 +54,14 @@ Route::middleware(['auth', 'CheckRole'])->group(function () {
   Route::namespace('Admin')->group(function () {
     Route::prefix('admin')->group(function () {
       // ProductController
+      Route::get('create/{slug}/image', 'ProductController@createImage')->name('product.image.show');
+      Route::post('create/{slug}/image/store', 'ProductController@storeImage')->name('product.image.store');
+      Route::delete('delete/{id}/image/', 'ProductController@destroyImage')->name('product.image.delete');
+
+      Route::get('create/{slug}/categories', 'ProductController@createCategories')->name('product.categories.show');
+      Route::post('create/{slug}/categories/store', 'ProductController@storeCategories')->name('product.categories.store');
+      Route::delete('delete/{cat}/{product}/categories/', 'ProductController@destroyCategories')->name('product.categories.delete');
+
       Route::resource('product', 'ProductController');
       // End ProductController
 
@@ -73,14 +81,20 @@ Route::middleware(['auth', 'CheckRole'])->group(function () {
       // StatusController
       Route::prefix('status')->group(function() {
         Route::get('belumdikonfirmasi', 'StatusController@belumDikonfirmasi')->name('status.belumDikonfirmasi');
+
         Route::get('belumdibayar', 'StatusController@belumDibayar')->name('status.belumDibayar');
         Route::get('belumdibayar/{id}', 'StatusController@belumDibayarUser')->name('status.belumDibayar.user');
+
         Route::get('belumdikemas', 'StatusController@belumDikemas')->name('status.belumDikemas');
         Route::get('belumdikemas/{id}', 'StatusController@belumDikemasUser')->name('status.belumDikemas.user');
+        Route::post('belumdikemas/cart/{cart}', 'StatusController@belumDikemasSend')->name('status.belumDikemas.send');
+
         Route::get('sedangdikirim', 'StatusController@sedangDikirim')->name('status.sedangDikirim');
         Route::get('sedangdikirim/{id}', 'StatusController@sedangDikirimUser')->name('status.sedangDikirim.user');
+
         Route::get('selesai', 'StatusController@selesai')->name('status.selesai');
         Route::get('selesai/{id}', 'StatusController@selesaiUser')->name('status.selesai.user');
+
         Route::get('dibatalkan', 'StatusController@dibatalkan')->name('status.dibatalkan');
         Route::get('dibatalkan/{id}', 'StatusController@dibatalkanUser')->name('status.dibatalkan.user');
       });

@@ -70,6 +70,22 @@ class StatusController extends Controller
     return view('page.admin.statusPemesanan.belumDikemas.show.index', compact('cart', 'user'));
   }
 
+  public function belumDikemasSend(Request $request, Cart $cart)
+  {
+    $request->validate([
+      'resi' => 'required',
+      'pengiriman' => 'required',
+    ]);
+
+    Cart::where('id', $cart->id)
+        ->update([
+          'resi' => $request -> resi,
+          'pengiriman' => $request -> pengiriman,
+        ]);
+
+    return redirect()->route('status.belumDikemas.user', $cart->user_id)->with('success', 'Profile updated!');
+  }
+
   public function sedangDikirim()
   {
     $cart = Cart::where('status', 4)->get();

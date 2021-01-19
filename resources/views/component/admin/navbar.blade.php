@@ -91,6 +91,7 @@
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">Status Pesanan</span>
         <div class="dropdown-divider"></div>
+
         @if( \App\product::where('stock', '<', 1)->get()->count() != 0 )
         <a href="{{ route('product.index') }}#lowtable" class="dropdown-item">
         @else
@@ -99,37 +100,85 @@
           <i class="fas fa-exclamation mr-2"></i> Stok Barang Sedikit
           <span class="float-right text-muted text-sm">{{ \App\product::where('stock', '<', 1)->get()->count() }}</span>
         </a>
+
         <div class="dropdown-divider"></div>
+
         <a href="#" class="dropdown-item">
           <i class="fas fa-envelope mr-2"></i> Belum Dikonfirmasi
-          <span class="float-right text-muted text-sm">3</span>
+          <?php
+          $belumDikonfirmasi = DB::table('carts')
+                    ->join('users', 'carts.user_id', '=', 'users.id')
+                    ->select(DB::raw('count(*) as jumlah, name'))
+                    ->where('status', '=', 1)
+                    ->where('ongkir', '=', null)
+                    ->groupBy('name')
+                    ->get();
+           ?>
+          <span class="float-right text-muted text-sm">{{ $belumDikonfirmasi->count() }}</span>
         </a>
+
         <div class="dropdown-divider"></div>
+
         <a href="#" class="dropdown-item">
           <i class="fas fa-wallet mr-2"></i> Belum Dibayar
-          <span class="float-right text-muted text-sm">12</span>
+          <?php
+            $belumDibayar = DB::table('carts')
+                              ->where('status', '=', 2)
+                              ->get();
+          ?>
+          <span class="float-right text-muted text-sm">{{ $belumDibayar -> count() }}</span>
         </a>
+
         <div class="dropdown-divider"></div>
+
         <a href="#" class="dropdown-item">
           <i class="fas fa-box-open mr-2"></i> Belum Dikemas
-          <span class="float-right text-muted text-sm">2</span>
+          <?php
+            $belumDikemas = DB::table('carts')
+                              ->where('status', '=', 3)
+                              ->get();
+          ?>
+          <span class="float-right text-muted text-sm">{{ $belumDikemas -> count() }}</span>
         </a>
+
         <div class="dropdown-divider"></div>
+
         <a href="#" class="dropdown-item">
           <i class="fas fa-truck-loading mr-2"></i> Sedang Dikirim
-          <span class="float-right text-muted text-sm">2</span>
+          <?php
+            $sedangDikirim = DB::table('carts')
+                                ->where('status', '=', 4)
+                                ->get();
+          ?>
+          <span class="float-right text-muted text-sm">{{ $sedangDikirim -> count() }}</span>
         </a>
+
         <div class="dropdown-divider"></div>
+
         <a href="#" class="dropdown-item">
           <i class="fas fa-check mr-2"></i> Selesai
-          <span class="float-right text-muted text-sm">2</span>
+          <?php
+            $selesai = DB::table('carts')
+                          ->where('status', '=', 5)
+                          ->get();
+          ?>
+          <span class="float-right text-muted text-sm">{{ $selesai -> count() }}</span>
         </a>
+
         <div class="dropdown-divider"></div>
+
         <a href="#" class="dropdown-item">
           <i class="fas fa-ban mr-2"></i> Dibatalkan
-          <span class="float-right text-muted text-sm">2</span>
+          <?php
+            $dibatalkan = DB::table('carts')
+                            ->where('status', '=', 6)
+                            ->get();
+          ?>
+          <span class="float-right text-muted text-sm">{{ $dibatalkan -> count() }}</span>
         </a>
+
         <div class="dropdown-divider"></div>
+
         <a href="#" class="dropdown-item dropdown-footer">Lihat Semua Status</a>
       </div>
     </li>

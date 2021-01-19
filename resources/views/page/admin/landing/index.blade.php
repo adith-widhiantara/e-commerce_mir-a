@@ -44,7 +44,7 @@ $title = "Halaman Utama Admin"
 <script src="{{ asset('lte/dist/js/demo.js') }}"></script>
 
 <script>
-var donutData        = {
+var donutData = {
   labels: [
     @foreach( $categories as $cat )
       '{{ $cat -> name }}',
@@ -58,11 +58,9 @@ var donutData        = {
         @endforeach
       ],
       backgroundColor : [
-        '#f56954',
-        '#00a65a',
-        '#f39c12',
-        '#00c0ef',
-        '#3c8dbc',
+        @foreach( $categories as $cat )
+          '{{ $cat -> color }}',
+        @endforeach
       ],
     }
   ]
@@ -75,13 +73,13 @@ var donutData        = {
       maintainAspectRatio : false,
       responsive : true,
     }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
+
     var pieChart = new Chart(pieChartCanvas, {
       type: 'pie',
       data: pieData,
       options: pieOptions
     })
+
   });
 </script>
 @endsection

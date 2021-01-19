@@ -53,7 +53,11 @@ class ShopController extends Controller
     public function show($slug)
     {
       $product = Product::where('slug', $slug)->firstOrFail();
-      return view('page.shop.detailShop.index', compact('product'));
+      if ( $product -> status == 1 ) {
+        return view('page.shop.detailShop.index', compact('product'));
+      } else {
+        return redirect()->route('landing.index');
+      }
     }
 
     /**

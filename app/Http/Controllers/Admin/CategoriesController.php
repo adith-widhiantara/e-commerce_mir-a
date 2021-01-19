@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Categories;
 
@@ -38,7 +39,20 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request -> validate([
+        'categories' => 'required',
+        'color' => 'required',
+      ]);
+
+      $name = $request -> categories;
+
+      Categories::create([
+        'name' => $name,
+        'slug' => Str::slug($name, '_'),
+        'color' => $request -> color,
+      ]);
+
+      return back();
     }
 
     /**
@@ -74,7 +88,21 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $request->validate([
+        'categories' => 'required',
+        'color' => 'required',
+      ]);
+
+      $name = $request -> categories;
+
+      Categories::where('id', $id)
+                ->update([
+                  'name' => $name,
+                  'slug' => Str::slug($name, '_'),
+                  'color' => $request -> color,
+                ]);
+
+      return back();
     }
 
     /**

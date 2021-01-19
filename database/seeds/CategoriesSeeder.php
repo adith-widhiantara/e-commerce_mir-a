@@ -16,14 +16,11 @@ class CategoriesSeeder extends Seeder
     {
       $faker = Faker::create();
 
-      for ($i=1; $i < 6; $i++) {
-        $title = $faker -> sentence($nbWords = 2, $variableNbWords = true);
-        $slug = Str::slug($title, '_');
+      for ($i=1; $i < 8; $i++) {
 
         \App\Categories::where('id', $i)
                       ->update([
-                        'name' => $title,
-                        'slug' => $slug,
+                        'color' => $faker -> hexcolor,
                       ]);
       }
     }
