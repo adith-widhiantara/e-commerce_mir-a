@@ -12,6 +12,7 @@ use App\Biodata;
 use App\Categories;
 use App\product;
 use App\Cart;
+use App\CartProduct;
 
 class CartController extends Controller
 {
@@ -24,16 +25,17 @@ class CartController extends Controller
     {
       $cart = Cart::where('user_id', Auth::id())
                   ->where('status', '=', 0)
-                  ->get();
-      $totalPrice = DB::table('carts')
-                      ->where('user_id', '=', Auth::id())
-                      ->sum('totalPrice');
+                  ->first();
 
-      $totalPricePivot = DB::table('cart_product')
-                          ->where('cart_id', '=', 7)
-                          ->sum('subTotalPrice');
+      if ( $cart == null ) {
+        return view('page.cart.index', compact('cart'));
+      } else {
+        $totalPricePivot = CartProduct::where('cart_id', $cart->id)
+                                      ->sum('subTotalPrice');
 
-      return view('page.cart.index', compact('cart', 'totalPricePivot'));
+        return view('page.cart.index', compact('cart', 'totalPricePivot'));
+      }
+
     }
 
     /**
@@ -54,7 +56,56 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+    }
+
+    public function storeCart(Request $request, $slug)
+    {
+      $product = product::where('slug', $slug)->first();
+      $user = Auth::user();
+
+      $cart = Cart::firstOrCreate(
+        [
+          'user_id' => $user->id,
+          'status' => 0
+        ],
+        [
+
+        ]
+      );
+
+      $cartproduct = CartProduct::updateOrCreate(
+        [
+          'cart_id' => $cart -> id,
+          'product_id' => $product -> id,
+        ],
+        [
+          'quantity' => $request -> quantity,
+          'subTotalPrice' => $request -> quantity * $product -> price,
+        ]
+      );
+
+      return redirect()->route('cart.index');
+    }
+
+    public function unggahBukti(Request $request, $id)
+    {
+      $request->validate([
+        'input-file' => 'required|image',
+      ]);
+
+      $photo = $request->file('input-file');
+      $namaPhoto = time().$photo->getClientOriginalName();
+      $tujuan_upload = 'img/upload/buktiTransfer';
+      $photo->move($tujuan_upload, $namaPhoto);
+
+      Cart::where('id', $id)
+          ->update([
+            'status' => 3,
+            'buktiTransfer' => $namaPhoto,
+          ]);
+
+      return redirect()->route('user.status');
     }
 
     /**
@@ -65,7 +116,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
-      // 
+      //
     }
 
     /**
@@ -99,7 +150,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-      Cart::destroy($id);
+      CartProduct::destroy($id);
       return redirect()->route('cart.index');
     }
 }

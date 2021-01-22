@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\Biodata;
 use App\Categories;
+use App\Cart;
 use App\product;
 use App\Bank;
 
@@ -128,6 +130,20 @@ class AdminController extends Controller
             'ongkir' => $request -> ongkir,
           ]);
 
+      $cart = Cart::where('user_id', $id)
+                  ->where('status', 1)
+                  ->first();
+      $totalPricePivot = DB::table('cart_product')
+                            ->where('cart_id', '=', $cart -> id)
+                            ->sum('subTotalPrice');
+
+      Cart::where('user_id', $id)
+          ->where('status', 1)
+          ->update([
+            'status' => 2,
+            'totalPrice' => $totalPricePivot + $request -> ongkir,
+          ]);
+
       return redirect()->route('admin.showUser', $id)->with('success', 'Data Tersimpan!');
     }
 
@@ -141,7 +157,7 @@ class AdminController extends Controller
       ]);
 
       $photo = $request->file('photoBank');
-      $namaPhoto = $photo->getClientOriginalName();
+      $namaPhoto = time().$photo->getClientOriginalName();
       $tujuan_upload = 'img/upload/bank';
       $photo->move($tujuan_upload, $namaPhoto);
 

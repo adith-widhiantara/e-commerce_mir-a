@@ -79,6 +79,7 @@ class StatusController extends Controller
 
     Cart::where('id', $cart->id)
         ->update([
+          'status' => 4,
           'resi' => $request -> resi,
           'pengiriman' => $request -> pengiriman,
         ]);

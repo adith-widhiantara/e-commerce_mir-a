@@ -12,6 +12,7 @@ use App\Biodata;
 use App\Categories;
 use App\product;
 use App\Cart;
+use App\CartProduct;
 use App\Bank;
 
 class CheckoutController extends Controller
@@ -25,12 +26,10 @@ class CheckoutController extends Controller
     {
       $cart = Cart::where('user_id', Auth::id())
                   ->where('status', '=', 0)
-                  ->get();
+                  ->first();
       $user = Auth::user();
-      $totalPricePivot = DB::table('cart_product')
-                          ->where('cart_id', '=', 7)
-                          ->sum('subTotalPrice');
-
+      $totalPricePivot = CartProduct::where('cart_id', $cart->id)
+                                    ->sum('subTotalPrice');
 
       return view('page.checkout.index', compact('cart', 'totalPricePivot', 'user'));
     }
@@ -38,12 +37,12 @@ class CheckoutController extends Controller
     public function dropboxPayment()
     {
       $cart = Cart::where('user_id', Auth::id())
-                  ->where('status', '=', 0)
-                  ->get();
+                  ->where('status', '=', 2)
+                  ->first();
       $user = Auth::user();
       $totalPricePivot = DB::table('cart_product')
-                          ->where('cart_id', '=', 7)
-                          ->sum('subTotalPrice');
+                            ->where('cart_id', '=', $cart -> id)
+                            ->sum('subTotalPrice');
       $bank = Bank::all();
 
       $totalProductOngkir = $user -> ongkir + $totalPricePivot;
@@ -104,6 +103,36 @@ class CheckoutController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function sendUser(Request $request, $id)
+    {
+      $request->validate([
+        'alamat' => 'required',
+        'kota' => 'required',
+        'kodePos' => 'required',
+        'nomorTelepon' => 'required|numeric',
+      ]);
+
+      $user = User::where('id', $id)->first();
+      $cart = Cart::where('user_id', $id)
+                  ->where('status', 0)
+                  ->first();
+
+      User::where('id', $user->id)
+          ->update([
+            'alamat' => $request -> alamat,
+            'kota' => $request -> kota,
+            'kodePos' => $request -> kodePos,
+            'nomorTelepon' => $request -> nomorTelepon,
+          ]);
+
+      Cart::where('id', $cart->id)
+          ->update([
+            'status' => 1,
+          ]);
+
+      return redirect()->route('user.status');
     }
 
     /**

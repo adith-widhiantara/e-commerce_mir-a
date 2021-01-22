@@ -12,39 +12,38 @@
           </tr>
         </thead>
         <tbody>
-          @foreach( $cart as $crt )
-            @foreach( $crt -> product as $pro )
-            <tr>
-              <td class="shoping__cart__item">
-                <img src="{{ asset('img/featured/featured1.png') }}" alt="">
-                <h5>
-                  {{ $pro -> name }}
-                </h5>
-              </td>
-              <td class="shoping__cart__price">
-                Rp {{ $pro -> price }}
-              </td>
-              <td class="shoping__cart__quantity">
-                <div class="quantity">
-                  <div class="pro-qty">
-                    <input type="text" value="{{ $pro -> pivot -> quantity }}">
-                  </div>
+          @foreach( $cart -> product as $pro )
+          <tr>
+            <td class="shoping__cart__item">
+              <img src="{{ asset('img/featured/featured1.png') }}" alt="">
+              <h5>
+                {{ $pro -> name }}
+              </h5>
+            </td>
+            <td class="shoping__cart__price">
+              Rp {{ $pro -> price }}
+            </td>
+            <td class="shoping__cart__quantity">
+              <div class="quantity">
+                <div class="pro-qty">
+                  <input type="text" value="{{ $pro -> pivot -> quantity }}" name="quantity">
                 </div>
-              </td>
-              <td class="shoping__cart__total">
-                Rp {{ $pro -> pivot -> subTotalPrice }}
-              </td>
-              <td class="shoping__cart__item__close">
-                <a href="#" onclick="event.preventDefault(); document.getElementById('delete-item-{{ $crt->id }}').submit();">
-                  <span class="icon_close"></span>
-                </a>
-                <form id="delete-item-{{ $crt->id }}" action="{{ route('cart.destroy', $crt->id) }}" method="POST" class="d-none">
-                  @csrf
-                  @method('delete')
-                </form>
-              </td>
-            </tr>
-            @endforeach
+              </div>
+            </td>
+            <td class="shoping__cart__total">
+              Rp {{ $pro -> pivot -> subTotalPrice }}
+            </td>
+            <td class="shoping__cart__item__close">
+              <a onclick="event.preventDefault(); document.getElementById('delete-item-{{ $pro -> pivot -> id }}').submit();">
+                <span class="icon_close"></span>
+              </a>
+
+              <form id="delete-item-{{ $pro -> pivot -> id }}" action="{{ route('cart.destroy', $pro -> pivot -> id) }}" method="POST" class="d-none">
+                @csrf
+                @method('delete')
+              </form>
+            </td>
+          </tr>
           @endforeach
         </tbody>
       </table>

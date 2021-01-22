@@ -4,13 +4,15 @@
       <div class="col-lg-6 col-md-6">
         <div class="product__details__pic">
           <div class="product__details__pic__item">
-            <img class="product__details__pic__item--large" src="{{ asset('img/featured/featured16.png') }}" alt="">
+            @foreach( $product -> imageproduct as $image )
+              <img class="product__details__pic__item--large" src="{{ asset('img/upload/product/'.$image->name) }}" alt="">
+              @break
+            @endforeach
           </div>
           <div class="product__details__pic__slider owl-carousel">
-            <img data-imgbigurl="{{ asset('img/product/tasbih digital 1.jpeg') }}" src="{{ asset('img/product/tasbih digital 1.jpeg') }}" alt="">
-            <img data-imgbigurl="{{ asset('img/product/tasbih digital 2.jpg') }}" src="{{ asset('img/product/tasbih digital 2.jpg') }}" alt="">
-            <img data-imgbigurl="{{ asset('img/product/tasbih digital 3.jpg') }}" src="{{ asset('img/product/tasbih digital 3.jpg') }}" alt="">
-            <img data-imgbigurl="{{ asset('img/product/tasbih digital 4.jpg') }}" src="{{ asset('img/product/tasbih digital 4.jpg') }}" alt="">
+            @foreach( $product -> imageproduct as $image )
+              <img data-imgbigurl="{{ asset('img/upload/product/'.$image->name) }}" src="{{ asset('img/upload/product/'.$image->name) }}" alt="">
+            @endforeach
           </div>
         </div>
       </div>
@@ -21,16 +23,21 @@
             <span>{{ $product->sold }} produk terjual</span>
           </div>
           <div class="product__details__price">Rp. {{ $product->price }}</div>
-          <div class="product__details__quantity">
-            <div class="quantity">
-              <div class="pro-qty">
-                <input type="text" value="1">
+
+          <form class="" action="{{ route('cart.slug.store', $product->slug) }}" method="post">
+            @csrf
+            <div class="product__details__quantity">
+              <div class="quantity">
+                <div class="pro-qty">
+                  <input type="text" value="1" name="quantity">
+                </div>
               </div>
             </div>
-          </div>
-          <a href="#" class="primary-btn">
-            Beli Sekarang
-          </a>
+            <button type="submit" href="#" class="primary-btn" style="border: none">
+              Beli Sekarang
+            </button>
+          </form>
+
           <ul>
             <li>
               <b>Stok Barang</b> <span>{{ $product->stock }} barang</span>

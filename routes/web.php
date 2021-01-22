@@ -28,12 +28,20 @@ Route::middleware(['auth'])->group(function () {
     // End ShopController
 
     // CartController
-    Route::resource('cart', 'CartController');
+    Route::prefix('cart')->group(function () {
+      Route::post('{slug}/store', 'CartController@storeCart')->name('cart.slug.store');
+      Route::delete('{id}/destroy', 'CartController@destroy')->name('cart.destroy');
+      Route::patch('{cart}/unggah', 'CartController@unggahBukti')->name('cart.unggahBukti');
+    });
+    Route::resource('cart', 'CartController')->except([
+      'destroy'
+    ]);
     // End CartController
 
     // CheckoutController
     Route::prefix('checkout')->group(function () {
       Route::get('payment', 'CheckoutController@dropboxPayment')->name('checkout.dropboxPayment');
+      Route::patch('senduser/{id}', 'CheckoutController@sendUser')->name('checkout.sendUser');
     });
     Route::resource('checkout', 'CheckoutController');
     // End CheckoutController

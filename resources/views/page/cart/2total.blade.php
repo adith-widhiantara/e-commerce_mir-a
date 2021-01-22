@@ -2,10 +2,10 @@
   <div class="col-lg-12">
     <div class="shoping__cart__btns">
       <a href="{{ route('shop.index') }}" class="primary-btn cart-btn">Lanjutkan Belanja</a>
-      <a href="{{ route('cart.index') }}" class="primary-btn cart-btn cart-btn-right">
+      <!-- <a class="primary-btn cart-btn cart-btn-right">
         <span class="icon_loading"></span>
         Perbarui Keranjang
-      </a>
+      </a> -->
     </div>
   </div>
   <div class="col-lg-6"></div>

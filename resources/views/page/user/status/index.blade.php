@@ -27,7 +27,14 @@
                 $text = "Dibatalkan";
               }
             ?>
-        <p class="card-text">Status : {{ $text }}</p>
+        <p class="card-text">
+          Status : {{ $text }}
+          @if ( $crt -> status == 4 )
+            <br>
+            Nomor Resi : {{ $crt -> resi }} ({{ $crt -> pengiriman }})
+          @endif
+        </p>
+
         @if ( $crt -> status == 6 )
           <div class="progress">
             <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -41,6 +48,24 @@
         @endif
 
         <ul class="list-group list-group-flush">
+          @if ( $crt -> status == 2 )
+            <li class="list-group-item">
+              <a href="{{ route('checkout.dropboxPayment') }}" class="btn btn-block" style="background-color: #7fad39; border-color: #7fad39; color: #ffffff">
+                Bayar
+              </a>
+            </li>
+          @elseif ( $crt -> status == 4 )
+            <li class="list-group-item">
+              <a onclick="event.preventDefault(); document.getElementById('barang-diterima-form').submit();" class="btn btn-block" style="background-color: #7fad39; border-color: #7fad39; color: #ffffff">
+                Barang Sudah Diterima
+              </a>
+
+              <form id="barang-diterima-form" class="" action="{{ route('user.update', $crt -> id) }}" method="post" style="display: none">
+                @csrf
+                @method('patch')
+              </form>
+            </li>
+          @endif
           @foreach ( $crt -> product as $pro )
             <li class="list-group-item">
               {{ $pro -> name }}

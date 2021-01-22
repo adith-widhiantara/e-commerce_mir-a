@@ -24,7 +24,7 @@ class product extends Model
 
   public function cart()
   {
-    return $this->belongsToMany('App\Cart');
+    return $this->belongsToMany('App\Cart')->withPivot('quantity','subTotalPrice');
   }
 
   public function imageproduct()

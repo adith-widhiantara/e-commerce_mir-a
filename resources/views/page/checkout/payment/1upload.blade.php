@@ -38,12 +38,17 @@
               Unggah bukti pembayaran
             </p>
             <div class="container">
-              <form class="" action="index.html" method="post">
-                <input type="file" id="input-file" name="input-file" accept="image/*" onchange={handleChange()} hidden />
+              <form class="" action="{{ route('cart.unggahBukti', $cart->id) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                @method('patch')
+                <input type="file" id="input-file" name="input-file" onchange={handleChange()} hidden />
                 <label class="btn btn-primary btn-block" for="input-file" role="button">
                   Unggah Bukti Pembayaran
                 </label>
-                <button type="submit" class="btn btn-block">Simpan</button>
+
+                <button type="submit" class="btn btn-block">
+                  Simpan
+                </button>
                 <div class="preview-box"></div>
               </form>
             </div>
@@ -57,24 +62,24 @@
 @section('JavaScript')
 <script>
 const handleChange = () => {
-const fileUploader = document.querySelector('#input-file');
-const getFile = fileUploader.files
-if (getFile.length !== 0) {
-  const uploadedFile = getFile[0];
-  readFile(uploadedFile);
-}
+  const fileUploader = document.querySelector('#input-file');
+  const getFile = fileUploader.files
+  if (getFile.length !== 0) {
+    const uploadedFile = getFile[0];
+    readFile(uploadedFile);
+  }
 }
 
 const readFile = (uploadedFile) => {
-if (uploadedFile) {
-  const reader = new FileReader();
-  reader.onload = () => {
-    const parent = document.querySelector('.preview-box');
-    parent.innerHTML = `<img class="preview-content" src=${reader.result} />`;
-  };
+  if (uploadedFile) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const parent = document.querySelector('.preview-box');
+      parent.innerHTML = `<img class="preview-content" src=${reader.result} />`;
+    };
 
-  reader.readAsDataURL(uploadedFile);
-}
+    reader.readAsDataURL(uploadedFile);
+  }
 };
 </script>
 @endsection

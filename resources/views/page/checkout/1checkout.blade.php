@@ -5,18 +5,18 @@
   </div>
   <div class="checkout__input">
     <p>Alamat<span>*</span></p>
-    <input type="text" value="{{ $user -> alamat }}">
+    <input type="text" value="{{ $user -> alamat }}" name="alamat">
   </div>
   <div class="checkout__input">
     <p>Kota<span>*</span></p>
-    <input type="text" value="{{ $user -> kota }}">
+    <input type="text" value="{{ $user -> kota }}" name="kota">
   </div>
   <div class="checkout__input">
     <p>Kode Pos<span>*</span></p>
-    <input type="text" value="{{ $user -> kodePos }}">
+    <input type="text" value="{{ $user -> kodePos }}" name="kodePos">
   </div>
   <div class="checkout__input">
     <p>Nomor Telepon<span>*</span></p>
-    <input type="text" value="{{ $user -> nomorTelepon }}">
+    <input type="text" value="{{ $user -> nomorTelepon }}" name="nomorTelepon">
   </div>
 </div>
