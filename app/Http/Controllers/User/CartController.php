@@ -93,6 +93,22 @@ class CartController extends Controller
       $request->validate([
         'input-file' => 'required|image',
       ]);
+      
+      $cart = Cart::where('id', $id)
+                  ->first();
+
+      foreach ($cart->product as $pro) {
+        $quantity = $pro->pivot->quantity;
+        $stock = $pro->stock;
+        $sold = $pro->sold;
+        $product = $pro->id;
+
+        product::where('id', $product)
+            ->update([
+              'stock' => ($stock - $quantity),
+              'sold' => ($sold + $quantity),
+            ]);
+      }
 
       $photo = $request->file('input-file');
       $namaPhoto = time().$photo->getClientOriginalName();

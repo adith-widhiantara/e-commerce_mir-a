@@ -25,12 +25,9 @@
           </ul>
           <ul>
             <li>
-              <a target="_blank" href="http://wa.me/6285707095995">
+              <a target="_blank" href="http://wa.me/{{ \App\Biodata::where('name', 'nomorTelepon')->first()->keterangan }}">
                 Hubungi Saya
               </a>
-            </li>
-            <li>
-              <a href="#">Testimoni</a>
             </li>
           </ul>
         </div>

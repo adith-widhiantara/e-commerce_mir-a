@@ -22,10 +22,11 @@
           <div class="featured__item">
             @foreach( $pro->imageproduct as $image )
               @if ($loop -> first)
-                <div class="featured__item__pic set-bg" data-setbg="{{ asset('img/upload/product/'.$image -> name) }}">
+                <a href="{{ route('shop.show', $pro -> slug) }}">
+                  <div class="featured__item__pic set-bg" data-setbg="{{ asset('img/upload/product/'.$image -> name) }}"></div>
+                </a>
               @endif
             @endforeach
-            </div>
               <div class="featured__item__text">
                 <h6>
                   <a href="{{ route('shop.show', $pro -> slug) }}">{{ $pro->name }}</a>

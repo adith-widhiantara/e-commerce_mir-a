@@ -26,7 +26,7 @@ class CheckoutController extends Controller
     {
       $cart = Cart::where('user_id', Auth::id())
                   ->where('status', '=', 0)
-                  ->first();
+                  ->firstOrFail();
       $user = Auth::user();
       $totalPricePivot = CartProduct::where('cart_id', $cart->id)
                                     ->sum('subTotalPrice');
@@ -39,7 +39,7 @@ class CheckoutController extends Controller
       $cart = Cart::where('user_id', Auth::id())
                   ->where('status', '=', 2)
                   ->where('id', $id)
-                  ->first();
+                  ->firstOrFail();
       $user = Auth::user();
       $totalPricePivot = DB::table('cart_product')
                             ->where('cart_id', '=', $cart -> id)
@@ -115,10 +115,11 @@ class CheckoutController extends Controller
         'nomorTelepon' => 'required|numeric',
       ]);
 
-      $user = User::where('id', $id)->first();
+      $user = User::where('id', $id)
+                  ->firstOrFail();
       $cart = Cart::where('user_id', $id)
                   ->where('status', 0)
-                  ->first();
+                  ->firstOrFail();
 
       if ( $request->alamat == $user->alamat && $request->kota == $user->kota && $request->kodePos == $user->kodePos ) {
         $totalPricePivot = DB::table('cart_product')
