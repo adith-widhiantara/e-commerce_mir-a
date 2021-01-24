@@ -9,6 +9,7 @@ class Categories extends Model
   protected $fillable=[
     'name',
     'slug',
+    'photo',
     'color',
   ];
 

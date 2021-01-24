@@ -5,13 +5,13 @@
         <div class="product__details__pic">
           <div class="product__details__pic__item">
             @foreach( $product -> imageproduct as $image )
-              <img class="product__details__pic__item--large" src="{{ asset('img/upload/product/'.$image->name) }}" alt="">
+              <img class="product__details__pic__item--large" src="{{ asset('img/upload/product/'.$image->name) }}" alt="" style="height: 450px; object-fit: cover;">
               @break
             @endforeach
           </div>
           <div class="product__details__pic__slider owl-carousel">
             @foreach( $product -> imageproduct as $image )
-              <img data-imgbigurl="{{ asset('img/upload/product/'.$image->name) }}" src="{{ asset('img/upload/product/'.$image->name) }}" alt="">
+              <img data-imgbigurl="{{ asset('img/upload/product/'.$image->name) }}" src="{{ asset('img/upload/product/'.$image->name) }}" alt="" style="height: 97.5px; object-fit: cover;">
             @endforeach
           </div>
         </div>

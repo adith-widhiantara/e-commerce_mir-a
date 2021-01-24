@@ -19,6 +19,13 @@ Route::get('/', 'LandingController@index')->name('landing.index');
 
 Auth::routes();
 
+// testing
+// Route::get('testing', function(){
+//   $product = \App\Product::where('id', 41)->first();
+//
+//   dd($product->categories);
+// });
+// end testing
 
 Route::middleware(['auth'])->group(function () {
   // User
@@ -40,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
 
     // CheckoutController
     Route::prefix('checkout')->group(function () {
-      Route::get('payment', 'CheckoutController@dropboxPayment')->name('checkout.dropboxPayment');
+      Route::get('payment/{cart}', 'CheckoutController@dropboxPayment')->name('checkout.dropboxPayment');
       Route::patch('senduser/{id}', 'CheckoutController@sendUser')->name('checkout.sendUser');
     });
     Route::resource('checkout', 'CheckoutController');
@@ -66,8 +73,6 @@ Route::middleware(['auth', 'CheckRole'])->group(function () {
       Route::post('create/{slug}/image/store', 'ProductController@storeImage')->name('product.image.store');
       Route::delete('delete/{id}/image/', 'ProductController@destroyImage')->name('product.image.delete');
 
-      Route::get('create/{slug}/categories', 'ProductController@createCategories')->name('product.categories.show');
-      Route::post('create/{slug}/categories/store', 'ProductController@storeCategories')->name('product.categories.store');
       Route::delete('delete/{cat}/{product}/categories/', 'ProductController@destroyCategories')->name('product.categories.delete');
 
       Route::resource('product', 'ProductController');

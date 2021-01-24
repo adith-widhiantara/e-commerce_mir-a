@@ -41,14 +41,21 @@ class CategoriesController extends Controller
     {
       $request -> validate([
         'categories' => 'required',
+        'image' => 'required|image',
         'color' => 'required',
       ]);
+
+      $photo = $request->file('image');
+      $namaPhoto = time() . "-" . $photo->getClientOriginalName();
+      $tujuan_upload = 'img/upload/categories';
+      $photo->move($tujuan_upload, $namaPhoto);
 
       $name = $request -> categories;
 
       Categories::create([
         'name' => $name,
         'slug' => Str::slug($name, '_'),
+        'photo' => $namaPhoto,
         'color' => $request -> color,
       ]);
 
@@ -90,8 +97,21 @@ class CategoriesController extends Controller
     {
       $request->validate([
         'categories' => 'required',
+        'image' => 'image',
         'color' => 'required',
       ]);
+
+      if ( $request->file('image') != null ) {
+        $photo = $request->file('image');
+        $namaPhoto = time() . "-" . $photo->getClientOriginalName();
+        $tujuan_upload = 'img/upload/categories';
+        $photo->move($tujuan_upload, $namaPhoto);
+
+        Categories::where('id', $id)
+                  ->update([
+                    'photo' => $namaPhoto,
+                  ]);
+      }
 
       $name = $request -> categories;
 

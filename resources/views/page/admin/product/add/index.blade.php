@@ -6,6 +6,11 @@ $title = "Tambah Produk"
 
 @section('title', $title)
 
+@section('style')
+  <link rel="stylesheet" href="{{ asset('lte/plugins/select2/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+@endsection
+
 @section('header')
 <div class="content-header">
   <div class="container-fluid">
@@ -36,35 +41,44 @@ $title = "Tambah Produk"
           <div class="form-group">
             <label for="ProsesTambahProduk">Proses Tambah Produk</label>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                30%
+              <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                50%
               </div>
             </div>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Nama Barang</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama Barang" name="name">
+            <input type="text" class="form-control" placeholder="Nama Barang" name="name">
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Deskripsi</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Deskripsi" name="desc">
+            <input type="text" class="form-control" placeholder="Deskripsi" name="desc">
+          </div>
+
+          <div class="form-group">
+            <label>Kategori</label>
+            <select class="select2" multiple="multiple" data-placeholder="Pilih Kategori" style="width: 100%;" name="categories[]">
+              @foreach( $allCategories as $cat )
+              <option value="{{ $cat -> id }}">{{ $cat->name }}</option>
+              @endforeach
+            </select>
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Stok</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Stok" name="stock">
+            <input type="number" class="form-control" placeholder="Stok" name="stock">
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Harga</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Harga" name="price">
+            <input type="number" class="form-control" placeholder="Harga" name="price">
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Berat (gram)</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Berat" name="weight">
+            <input type="number" class="form-control" placeholder="Berat" name="weight">
           </div>
 
           <div class="form-check">
@@ -84,12 +98,16 @@ $title = "Tambah Produk"
 
 @section('script')
   <script src="{{ asset('lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
+  <script src="{{ asset('lte/plugins/select2/js/select2.full.min.js') }}"></script>
 @endsection
 
 @section('script2')
 <script>
   $(function () {
     bsCustomFileInput.init();
+
+    $('.select2').select2();
   });
 
   function previewImage() {

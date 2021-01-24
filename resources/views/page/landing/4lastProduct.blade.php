@@ -13,7 +13,10 @@
                 } ?>
                 <a href="{{ route('shop.show', $new -> slug) }}" class="latest-product__item">
                   <div class="latest-product__item__pic">
-                    <img src="{{ asset('img/featured/featured1.png') }}" alt="">
+                    @foreach( $new->imageproduct as $image )
+                      <img src="{{ asset('img/upload/product/'.$image -> name) }}" alt="">
+                      @break
+                    @endforeach
                   </div>
                   <div class="latest-product__item__text">
                     <h6>{{ $new -> name }}</h6>
@@ -28,7 +31,10 @@
                 @if( $key > 2 )
                 <a href="{{ route('shop.show', $new -> slug) }}" class="latest-product__item">
                   <div class="latest-product__item__pic">
-                    <img src="{{ asset('img/featured/featured4.png') }}" alt="">
+                    @foreach( $new->imageproduct as $image )
+                      <img src="{{ asset('img/upload/product/'.$image -> name) }}" alt="">
+                      @break
+                    @endforeach
                   </div>
                   <div class="latest-product__item__text">
                     <h6>{{ $new -> name }}</h6>
@@ -54,7 +60,10 @@
               } ?>
               <a href="{{ route('shop.show', $sold -> slug) }}" class="latest-product__item">
                 <div class="latest-product__item__pic">
-                  <img src="{{ asset('img/featured/featured7.png') }}" alt="">
+                  @foreach( $sold->imageproduct as $image )
+                    <img src="{{ asset('img/upload/product/'.$image -> name) }}" alt="">
+                    @break
+                  @endforeach
                 </div>
                 <div class="latest-product__item__text">
                   <h6>{{ $sold -> name }}</h6>
@@ -69,7 +78,10 @@
                 @if( $key > 2 )
                 <a href="{{ route('shop.show', $sold -> slug) }}" class="latest-product__item">
                   <div class="latest-product__item__pic">
-                    <img src="{{ asset('img/featured/featured10.png') }}" alt="">
+                    @foreach( $sold->imageproduct as $image )
+                      <img src="{{ asset('img/upload/product/'.$image -> name) }}" alt="">
+                      @break
+                    @endforeach
                   </div>
                   <div class="latest-product__item__text">
                     <h6>{{ $sold -> name }}</h6>
@@ -95,11 +107,14 @@
                 } ?>
                 <a href="{{ route('shop.show', $price -> slug) }}" class="latest-product__item">
                   <div class="latest-product__item__pic">
-                    <img src="{{ asset('img/featured/featured12.png') }}" alt="">
+                    @foreach( $price->imageproduct as $image )
+                      <img src="{{ asset('img/upload/product/'.$image -> name) }}" alt="">
+                      @break
+                    @endforeach
                   </div>
                   <div class="latest-product__item__text">
                     <h6>{{ $price -> name }}</h6>
-                    <span>{{ $price -> price }}</span>
+                    <span>Rp. {{ $price -> price }}</span>
                   </div>
                 </a>
                 <?php $count++ ?>
@@ -110,11 +125,14 @@
                 @if( $key > 2 )
                   <a href="{{ route('shop.show', $price -> slug) }}" class="latest-product__item">
                     <div class="latest-product__item__pic">
-                      <img src="{{ asset('img/featured/featured15.png') }}" alt="">
+                      @foreach( $price->imageproduct as $image )
+                        <img src="{{ asset('img/upload/product/'.$image -> name) }}" alt="">
+                        @break
+                      @endforeach
                     </div>
                     <div class="latest-product__item__text">
                       <h6>{{ $price -> name }}</h6>
-                      <span>{{ $price -> price }}</span>
+                      <span>Rp. {{ $price -> price }}</span>
                     </div>
                   </a>
                 @endif

@@ -15,7 +15,11 @@
           @foreach( $cart -> product as $pro )
           <tr>
             <td class="shoping__cart__item">
-              <img src="{{ asset('img/featured/featured1.png') }}" alt="">
+              @foreach( $pro -> imageproduct as $image )
+                @if( $loop -> first )
+                  <img src="{{ asset('img/upload/product/'.$image->name) }}" alt="">
+                @endif
+              @endforeach
               <h5>
                 {{ $pro -> name }}
               </h5>

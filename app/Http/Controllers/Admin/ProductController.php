@@ -35,7 +35,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-      return view('page.admin.product.add.index');
+      $allCategories = Categories::orderBy('id', 'asc')->get();
+      return view('page.admin.product.add.index', compact('allCategories'));
     }
 
     /**
@@ -49,6 +50,7 @@ class ProductController extends Controller
       $request->validate([
         'name'  => 'required',
         'desc'  => 'required',
+        'categories'  => 'required',
         'stock'  => 'required|numeric',
         'price'  => 'required|numeric',
         'weight'  => 'required|numeric',
@@ -62,7 +64,7 @@ class ProductController extends Controller
         $status = 1;
       }
 
-      product::create([
+      $product = product::create([
         'name' => $request -> name,
         'slug' => $slug,
         'desc' => $request -> desc,
@@ -71,6 +73,8 @@ class ProductController extends Controller
         'weight' => $request -> weight,
         'status' => $status,
       ]);
+
+      $product -> categories() -> attach($request -> categories);
 
       return redirect()->route('product.image.show', $slug);
     }
@@ -93,47 +97,19 @@ class ProductController extends Controller
         ]);
 
         $photo = $request->file('image');
-        $namaPhoto = time() . "-" . $photo->getClientOriginalName();
+        $namaPhoto = time() . $photo->getClientOriginalName();
+        $namaPhoto2 = str_replace(' ', '', $namaPhoto);
+        $namaPhotoSlug = preg_replace('/[^A-Za-z0-9\-.]/', '', $namaPhoto2);
         $tujuan_upload = 'img/upload/product';
-        $photo->move($tujuan_upload, $namaPhoto);
+        $photo->move($tujuan_upload, $namaPhotoSlug);
 
         ImageProduct::create([
           'product_id' => $product -> id,
-          'name' => $namaPhoto,
+          'name' => $namaPhotoSlug,
         ]);
 
         return back();
       }
-    }
-
-    public function createCategories($slug)
-    {
-      $product = product::where('slug', $slug)->firstOrFail();
-      $allCategories = Categories::orderBy('id', 'asc')->get();
-      $procat = $product->categories;
-      $wto = $allCategories->diff($procat);
-
-      return view('page.admin.product.add.categories.index', compact('product', 'wto'));
-    }
-
-    public function storeCategories(Request $request, $slug)
-    {
-      $request->validate([
-        'categories' => 'required',
-      ]);
-
-      if ( $request-> categories == "...") {
-        return back();
-      }
-
-      $product = product::where('slug', $slug)->first();
-
-      DB::table('categories_product')->insert([
-        'product_id' => $product -> id,
-        'Categories_id' => $request -> categories,
-      ]);
-
-      return redirect()->route('product.categories.show', $slug);
     }
 
     /**
@@ -187,10 +163,12 @@ class ProductController extends Controller
       }
 
       $product = Product::where('slug', $slug)->firstOrFail();
+      $slug = Str::slug($request -> name, '-');
 
       Product::where('id', $product -> id)
             ->update([
               'name' => $request -> name,
+              'slug' => $slug,
               'desc' => $request -> desc,
               'stock' => $request -> stock,
               'price' => $request -> price,
@@ -199,10 +177,7 @@ class ProductController extends Controller
             ]);
 
       if (isset($request -> categories)) {
-        DB::table('categories_product')->insert([
-          'product_id' => $product -> id,
-          'Categories_id' => $request -> categories,
-        ]);
+        $product -> categories() -> attach($request -> categories);
       }
 
       return redirect()->route('product.show', $slug);

@@ -30,9 +30,9 @@ Breadcrumbs::for('checkout.index', function ($trail) {
 });
 
 // landing.index > cart.index > checkout.index > checkout.dropboxPayment
-Breadcrumbs::for('checkout.dropboxPayment', function ($trail) {
+Breadcrumbs::for('checkout.dropboxPayment', function ($trail, $cart) {
     $trail->parent('checkout.index');
-    $trail->push('Upload bukti pembayaran', route('checkout.dropboxPayment'));
+    $trail->push('Upload bukti pembayaran', route('checkout.dropboxPayment', $cart -> id));
 });
 
 // landing.index > user.index

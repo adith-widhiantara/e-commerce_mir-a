@@ -10,7 +10,11 @@
           } ?>
           <a href="{{ route('shop.show', $new->slug) }}" class="latest-product__item">
             <div class="latest-product__item__pic">
-              <img src="{{ asset('img/featured/featured1.png') }}" alt="">
+              @foreach( $new->imageproduct as $image )
+                @if( $loop->first )
+                  <img src="{{ asset('img/upload/product/'.$image->name) }}" alt="">
+                @endif
+              @endforeach
             </div>
             <div class="latest-product__item__text">
               <h6>{{ $new -> name }}</h6>
@@ -25,7 +29,11 @@
           @if( $key > 2 )
           <a href="{{ route('shop.show', $new->slug) }}" class="latest-product__item">
             <div class="latest-product__item__pic">
-              <img src="{{ asset('img/featured/featured1.png') }}" alt="">
+              @foreach( $new->imageproduct as $image )
+                @if( $loop->first )
+                  <img src="{{ asset('img/upload/product/'.$image->name) }}" alt="">
+                @endif
+              @endforeach
             </div>
             <div class="latest-product__item__text">
               <h6>{{ $new -> name }}</h6>

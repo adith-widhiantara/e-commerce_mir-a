@@ -52,8 +52,8 @@
         <thead>
           <tr>
             <th>Nomor</th>
-            <th>Nama</th>
-            <th>Jumlah Barang</th>
+            <th>Nama Barang</th>
+            <th>Jumlah barang</th>
           </tr>
         </thead>
         <tbody>
@@ -76,8 +76,8 @@
         <tfoot>
           <tr>
             <th>Nomor</th>
-            <th>Nama</th>
-            <th>Jumlah Barang</th>
+            <th>Nama Barang</th>
+            <th>Jumlah barang</th>
           </tr>
         </tfoot>
       </table>

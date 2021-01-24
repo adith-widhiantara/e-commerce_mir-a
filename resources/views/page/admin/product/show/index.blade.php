@@ -4,6 +4,9 @@
 
 @section('style')
   <link rel="stylesheet" href="{{ asset('lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('lte/plugins/select2/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 @endsection
 
 @section('header')
@@ -42,12 +45,16 @@
 @section('script')
   <script src="{{ asset('lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
   <script src="{{ asset('lte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+
+  <script src="{{ asset('lte/plugins/select2/js/select2.full.min.js') }}"></script>
 @endsection
 
 @section('script2')
   <script>
     $(function () {
       bsCustomFileInput.init();
+
+      $('.select2').select2();
 
       $('.product-image-thumb').on('click', function () {
         var image_element = $(this).find('img')

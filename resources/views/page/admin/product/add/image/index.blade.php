@@ -41,18 +41,18 @@ $title = "Tambah Produk"
             <div class="form-group">
               <label for="ProsesTambahProduk">Proses Tambah Produk</label>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                  60%
+                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                  90%
                 </div>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="exampleInputFile">File input</label>
+              <label for="exampleInputFile">Gambar</label>
               <div class="input-group">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="exampleInputFile" onchange="previewImage();" name="image">
-                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                  <label class="custom-file-label" for="exampleInputFile">Pilih Gambar</label>
                 </div>
                 <div class="input-group-append">
                   <span class="input-group-text">Upload</span>
@@ -72,8 +72,8 @@ $title = "Tambah Produk"
                 </button>
               @endif
 
-              <a href="{{ route('product.categories.show', $product -> slug) }}" class="btn btn-success float-right">
-                Selanjutnya
+              <a href="{{ route('product.show', $product -> slug) }}" class="btn btn-success float-right">
+                Selesai
               </a>
             </div>
           </form>
@@ -82,7 +82,7 @@ $title = "Tambah Produk"
           <div class="row">
             @foreach( $product -> imageproduct as $image )
               <div class="col-6 col-lg-3">
-                <img class="img-thumbnail" src="{{ asset('img/upload/product/'. $image -> name) }}" alt="">
+                <img class="img-thumbnail" src="{{ asset('img/upload/product/'. $image -> name) }}" alt="" style="height: 200px; width: 100%; object-fit: cover;">
               </div>
             @endforeach
           </div>

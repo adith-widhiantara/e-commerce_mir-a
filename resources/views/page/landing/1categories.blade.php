@@ -4,7 +4,7 @@
       <div class="categories__slider owl-carousel">
         @foreach( $categories as $cat )
           <div class="col-lg-3">
-            <div class="categories__item set-bg" data-setbg="{{ asset('img/categories/cat5.png') }}">
+            <div class="categories__item set-bg" data-setbg="{{ asset('img/upload/categories/'.$cat -> photo) }}">
               <h5>
                 <a href="#">{{ $cat -> name }}</a>
               </h5>

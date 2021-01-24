@@ -34,10 +34,11 @@ class CheckoutController extends Controller
       return view('page.checkout.index', compact('cart', 'totalPricePivot', 'user'));
     }
 
-    public function dropboxPayment()
+    public function dropboxPayment($id)
     {
       $cart = Cart::where('user_id', Auth::id())
                   ->where('status', '=', 2)
+                  ->where('id', $id)
                   ->first();
       $user = Auth::user();
       $totalPricePivot = DB::table('cart_product')
@@ -119,20 +120,34 @@ class CheckoutController extends Controller
                   ->where('status', 0)
                   ->first();
 
-      User::where('id', $user->id)
-          ->update([
-            'alamat' => $request -> alamat,
-            'kota' => $request -> kota,
-            'kodePos' => $request -> kodePos,
-            'nomorTelepon' => $request -> nomorTelepon,
-          ]);
+      if ( $request->alamat == $user->alamat && $request->kota == $user->kota && $request->kodePos == $user->kodePos ) {
+        $totalPricePivot = DB::table('cart_product')
+                              ->where('cart_id', '=', $cart -> id)
+                              ->sum('subTotalPrice');
 
-      Cart::where('id', $cart->id)
-          ->update([
-            'status' => 1,
-          ]);
+        Cart::where('id', $cart->id)
+            ->update([
+              'status' => 2,
+              'totalPrice' => $totalPricePivot + $user -> ongkir,
+            ]);
 
-      return redirect()->route('user.status');
+        return redirect()->route('user.status');
+      } else {
+        User::where('id', $user->id)
+            ->update([
+              'alamat' => $request -> alamat,
+              'kota' => $request -> kota,
+              'kodePos' => $request -> kodePos,
+              'nomorTelepon' => $request -> nomorTelepon,
+            ]);
+
+        Cart::where('id', $cart->id)
+            ->update([
+              'status' => 1,
+            ]);
+
+        return redirect()->route('user.status');
+      }
     }
 
     /**

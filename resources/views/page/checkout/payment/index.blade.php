@@ -4,7 +4,7 @@
 
 @section('base')
 <!-- Breadcrumbs -->
-  {{ Breadcrumbs::render('checkout.dropboxPayment') }}
+  {{ Breadcrumbs::render('checkout.dropboxPayment', $cart) }}
 <!-- end Breadcrumbs -->
 
 <section class="checkout spad">

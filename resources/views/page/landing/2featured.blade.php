@@ -20,18 +20,11 @@
       @foreach( $product as $pro )
         <div class="col-lg-3 col-md-4 col-sm-6 mix @foreach( $pro->categories as $cat ) {{ $cat->slug }} @endforeach">
           <div class="featured__item">
-            <div class="featured__item__pic set-bg" data-setbg="{{ asset('img/featured/featured1.png') }}">
-              <ul class="featured__item__pic__hover">
-                <li>
-                  <a href="#"><i class="fa fa-heart"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-retweet"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                </li>
-              </ul>
+            @foreach( $pro->imageproduct as $image )
+              @if ($loop -> first)
+                <div class="featured__item__pic set-bg" data-setbg="{{ asset('img/upload/product/'.$image -> name) }}">
+              @endif
+            @endforeach
             </div>
               <div class="featured__item__text">
                 <h6>

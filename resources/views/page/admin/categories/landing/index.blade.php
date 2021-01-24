@@ -56,6 +56,8 @@ $title = "Daftar Kategori"
     <script src="{{ asset('lte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
   <!-- end table -->
 
+  <script src="{{ asset('lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
   <script src="{{ asset('lte/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
 @endsection
 
@@ -67,11 +69,23 @@ $title = "Daftar Kategori"
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
-      $('.my-colorpicker2').colorpicker()
+      $('.my-colorpicker2').colorpicker();
+
+      bsCustomFileInput.init();
 
       $('.my-colorpicker2').on('colorpickerChange', function(event) {
         $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
       });
     });
+
+    function previewImage() {
+      document.getElementById("image-preview").style.display = "block";
+      var oFReader = new FileReader();
+       oFReader.readAsDataURL(document.getElementById("exampleInputFile").files[0]);
+
+      oFReader.onload = function(oFREvent) {
+        document.getElementById("image-preview").src = oFREvent.target.result;
+      };
+    };
   </script>
 @endsection

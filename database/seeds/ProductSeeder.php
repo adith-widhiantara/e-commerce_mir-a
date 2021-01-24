@@ -16,20 +16,26 @@ class ProductSeeder extends Seeder
     {
       $faker = Faker::create();
 
-      for ($i=0; $i < 30; $i++) {
+      for ($i=0; $i < 37; $i++) {
         $name = $faker->sentence(3);
         $slug = Str::slug($name, '-');
 
-        \App\Product::create([
-          'name' => $name,
-          'slug' => $slug,
-          'desc' => $faker->sentence(10),
-          'stock' => $faker -> randomDigit,
-          'price' => $faker -> randomDigit * 1000,
-          'sold' => $faker -> randomDigit,
-          'weight' => $faker -> numberBetween($min = 1, $max = 9) * 100,
-          'status' => 1,
-        ]);
+        // \App\Product::create([
+        //   'name' => $name,
+        //   'slug' => $slug,
+        //   'desc' => $faker->sentence(10),
+        //   'stock' => $faker -> randomDigit,
+        //   'price' => $faker -> randomDigit * 1000,
+        //   'sold' => $faker -> randomDigit,
+        //   'weight' => $faker -> numberBetween($min = 1, $max = 9) * 100,
+        //   'status' => 1,
+        // ]);
+
+        \App\Product::where('id', $i)
+                    ->update([
+                      'stock' => 30,
+                      'sold' => 0,
+                    ]);
       }
     }
 }

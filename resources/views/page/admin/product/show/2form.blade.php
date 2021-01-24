@@ -4,7 +4,7 @@
   <div class="card-body">
     <div class="form-group">
       <label for="exampleInputEmail1">Nama Barang</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama Barang" value="{{ $product -> name }}" name="name">
+      <input type="text" class="form-control" placeholder="Nama Barang" value="{{ $product -> name }}" name="name">
     </div>
 
     <div class="form-group">
@@ -14,34 +14,31 @@
 
     <div class="form-group">
       <label>Kategori</label>
-      <select class="form-control" name="categories">
-        <option value="">...</option>
+      <select class="select2" multiple="multiple" data-placeholder="Pilih Kategori" style="width: 100%;" name="categories[]">
         @foreach( $wto as $cat )
-        <option value="{{ $cat -> id }}">
-          {{ $cat->name }}
-        </option>
+        <option value="{{ $cat -> id }}">{{ $cat->name }}</option>
         @endforeach
       </select>
     </div>
 
     <div class="form-group">
       <label for="exampleInputPassword1">Stok</label>
-      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Stok" value="{{ $product -> stock }}" name="stock">
+      <input type="number" class="form-control" placeholder="Stok" value="{{ $product -> stock }}" name="stock">
     </div>
 
     <div class="form-group">
       <label for="exampleInputPassword1">Harga</label>
-      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Harga" value="{{ $product -> price }}" name="price">
+      <input type="number" class="form-control" placeholder="Harga" value="{{ $product -> price }}" name="price">
     </div>
 
     <div class="form-group">
       <label for="exampleInputPassword1">Berat</label>
-      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Berat" value="{{ $product -> weight }}" name="weight">
+      <input type="number" class="form-control" placeholder="Berat" value="{{ $product -> weight }}" name="weight">
     </div>
 
     <div class="form-group">
       <label for="exampleInputPassword1">Jumlah Terjual</label>
-      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Terjual" value="{{ $product -> sold }}" disabled>
+      <input type="number" class="form-control" placeholder="Jumlah Terjual" value="{{ $product -> sold }}" disabled>
     </div>
 
     <div class="form-check">

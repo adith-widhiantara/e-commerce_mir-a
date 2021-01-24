@@ -50,17 +50,17 @@
         <ul class="list-group list-group-flush">
           @if ( $crt -> status == 2 )
             <li class="list-group-item">
-              <a href="{{ route('checkout.dropboxPayment') }}" class="btn btn-block" style="background-color: #7fad39; border-color: #7fad39; color: #ffffff">
+              <a href="{{ route('checkout.dropboxPayment', $crt -> id) }}" class="btn btn-block" style="background-color: #7fad39; border-color: #7fad39; color: #ffffff">
                 Bayar
               </a>
             </li>
           @elseif ( $crt -> status == 4 )
             <li class="list-group-item">
-              <a onclick="event.preventDefault(); document.getElementById('barang-diterima-form').submit();" class="btn btn-block" style="background-color: #7fad39; border-color: #7fad39; color: #ffffff">
+              <a onclick="event.preventDefault(); document.getElementById('barang-diterima-{{ $crt -> id }}-form').submit();" class="btn btn-block" style="background-color: #7fad39; border-color: #7fad39; color: #ffffff">
                 Barang Sudah Diterima
               </a>
 
-              <form id="barang-diterima-form" class="" action="{{ route('user.update', $crt -> id) }}" method="post" style="display: none">
+              <form id="barang-diterima-{{ $crt -> id }}-form" class="" action="{{ route('user.update', $crt -> id) }}" method="post" style="display: none">
                 @csrf
                 @method('patch')
               </form>

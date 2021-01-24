@@ -35,7 +35,9 @@
         <ul class="list-group">
           @foreach( $highestSoldProduct as $high )
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              {{ $high -> name }}
+              <a href="{{ route('product.show', $high -> slug) }}">
+                {{ $high -> name }}
+              </a>
               <span class="badge badge-primary badge-pill">{{ $high -> sold }}</span>
             </li>
           @endforeach
