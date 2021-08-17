@@ -24,27 +24,27 @@
           </div>
           <div class="hero__search__phone">
             <div class="hero__search__phone__icon">
-              <a target="_blank" href="http://wa.me/{{ \App\Biodata::where('name', 'nomorTelepon')->first()->keterangan }}">
+              <a target="_blank" href="#">
                 <i class="fa fa-phone"></i>
               </a>
             </div>
             <div class="hero__search__phone__text">
-              <a target="_blank" href="http://wa.me/{{ \App\Biodata::where('name', 'nomorTelepon')->first()->keterangan }}">
-                <h5>+{{ \App\Biodata::where('name', 'nomorTelepon')->first()->keterangan }}</h5>
+              <a target="_blank" href="#">
+                <h5>+</h5>
                 <span>Hubungi via whatsapp</span>
               </a>
             </div>
           </div>
         </div>
         @if (url()->current() == route('landing.index'))
-          <div id="myNavbar" class="hero__item set-bg" data-setbg="{{ asset('img/banner/banner.png') }}">
-            <div class="hero__text">
-              <span>Mir'a Collection</span>
-              <h2>Pernak-Pernik<br />Tasbih, dan lain-lain</h2>
-              <p>Kediri, Jawa Timur</p>
-              <a href="#featured" class="primary-btn">Beli Sekarang</a>
-            </div>
+        <div id="myNavbar" class="hero__item set-bg" data-setbg="{{ asset('img/banner/banner.png') }}">
+          <div class="hero__text">
+            <span>Mir'a Collection</span>
+            <h2>Pernak-Pernik<br />Tasbih, dan lain-lain</h2>
+            <p>Kediri, Jawa Timur</p>
+            <a href="#featured" class="primary-btn">Beli Sekarang</a>
           </div>
+        </div>
         @endif
       </div>
     </div>

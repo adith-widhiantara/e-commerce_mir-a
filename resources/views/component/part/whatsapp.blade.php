@@ -1,6 +1,6 @@
 <ul>
   <li>
-    <a target="_blank" href="http://wa.me/{{ \App\Biodata::where('name', 'nomorTelepon')->first()->keterangan }}">
+    <a target="_blank" href="#">
       <i class="fab fa-whatsapp"></i>
       Hubungi via Whatsapp
     </a>
